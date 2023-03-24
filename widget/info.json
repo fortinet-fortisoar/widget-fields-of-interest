@@ -1,0 +1,19 @@
+{
+    "name": "fieldsOfInterest",
+    "title": "Fields Of Interest",
+    "subTitle": "Fields Of Interest",
+    "version": "1.0.0",
+    "metadata": {
+        "size": "lg",
+        "description": "",
+        "pages": [
+            "View Panel"
+        ],
+        "certified": "No",
+        "publisher": "Community",
+        "compatibility": [
+            "7.3.1"
+        ]
+    },
+    "development": true
+}
