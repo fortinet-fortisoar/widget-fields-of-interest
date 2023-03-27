@@ -18,17 +18,23 @@
             style : 'display-inline-block'
         }];
 
+        $scope.config.excludeFieldsArray = $scope.config.excludeFieldsArray ? $scope.config.excludeFieldsArray : [];
         $scope.changeStructure = changeStructure;
         $scope.alwaysUseEdit = ['checkbox', 'lookup', 'picklist', 'datetime'];
         $scope.fieldNotExists = fieldNotExists;
         $scope.addField = addField;
         $scope.removeField = removeField;
-        $scope.config.hideEmptyFields = $scope.config.hideEmptyFields ? $scope.config.hideEmptyFields : false;
+        if($scope.config.hideEmptyFields === undefined){
+            $scope.config.hideEmptyFields = true;
+        }
+        
         $scope.config.includeAll = $scope.config.includeAll ? $scope.config.includeAll : false;
+
+
         $scope.module = $state.params.module;
         $scope.applyDefaults = applyDefaults;
-        $scope.allReadOnly = true;
-        $scope.allHighlightMode = true;
+        $scope.config.allReadOnly = true;
+        $scope.config.allHighlightMode = true;
         checkReadOnlyAndAllHighlight();
         loadAttributes();
 
@@ -52,8 +58,8 @@
                 var fields = [];
                 angular.forEach(column.fields, function(field) {
                   if (angular.isObject(field)) {
-                    $scope.allReadOnly = $scope.allReadOnly && field.readOnly;
-                    $scope.allHighlightMode = $scope.allHighlightMode && field.highlightMode;
+                    $scope.config.allReadOnly = $scope.config.allReadOnly && field.readOnly;
+                    $scope.config.allHighlightMode = $scope.config.allHighlightMode && field.highlightMode;
                     fields.push(field);
                   } else {
                     fields.push({

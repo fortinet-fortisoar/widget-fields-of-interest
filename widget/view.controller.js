@@ -6,16 +6,16 @@
 
     fieldsOfInterest100Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', 'Modules', 'viewTemplate', '$timeout'];
 
-    function fieldsOfInterest100Ctrl($scope, $state, Entity, FormEntityService, Modules, viewTemplate, $rootScope, $timeout ) {
+    function fieldsOfInterest100Ctrl($scope, $state, Entity, FormEntityService, Modules, viewTemplate, $rootScope, $timeout) {
         $scope.id = $state.params.id;
         $scope.module = $state.params.module;
         $scope.updateFieldValues = updateFieldValues;
         $scope.notifyFieldChange = notifyFieldChange;
         $scope.viewValueChange = viewValueChange;
         $scope.submitField = FormEntityService.submitField;
-        $scope.$on('template:refresh', function(event, changedFields) {
-            angular.forEach(changedFields, function(field) {
-              $scope.notifyFieldChange(field.value, field);
+        $scope.$on('template:refresh', function (event, changedFields) {
+            angular.forEach(changedFields, function (field) {
+                $scope.notifyFieldChange(field.value, field);
             });
             init();
         });
@@ -36,37 +36,56 @@
             }).then(function () {
                 $scope.entity = entity;
                 getFields();
-            }).finally(function() {
+            }).finally(function () {
                 $scope.initialized = true;
             });
         }
         init();
 
+        //Get all feilds which are not selected
         function getMissingFields() {
             var configRows = $scope.config.rows[0].columns;
             var selectedFields = [];
             configRows.forEach(function (column, index) {
                 column.fields.forEach(function (fields) {
-                    selectedFields.push( fields.name );
+                    selectedFields.push(fields.name);
                 })
             })
 
             var missingFields = [];
-            var excludeArray =[];
-            $scope.config.excludeFieldsArray.forEach(function(field, index){
+            var excludeArray = [];
+            $scope.config.excludeFieldsArray.forEach(function (field, index) {
                 excludeArray.push(field.name);
             })
             for (const key in $scope.entity.fields) {
-                if (!selectedFields.includes(key) && !excludeArray.includes(key)  && $scope.entity.fields[key].type !== 'manyToMany'
-                    && $scope.entity.fields[key].type !== 'picklist' && $scope.entity.fields[key].type !== 'oneToMany') {
+                if (!selectedFields.includes(key) && !excludeArray.includes(key) && $scope.entity.fields[key].type !== 'manyToMany'
+                   && $scope.entity.fields[key].type !== 'oneToMany') {
                     missingFields.push({
                         name: key,
-                        readOnly : true
+                        readOnly: true
                     });
                 }
             }
+            missingFields = sortByName(missingFields);
             return missingFields;
         }
+        
+        function sortByName(missingFields) {
+            missingFields.sort(function(field1, field2) {
+              var nameA = field1.name.toUpperCase(); // ignore upper and lowercase
+              var nameB = field2.name.toUpperCase(); // ignore upper and lowercase
+              if (nameA < nameB) {
+                return -1;
+              }
+              if (nameA > nameB) {
+                return 1;
+              }
+              // names must be equal
+              return 0;
+            });
+            return missingFields;
+          }
+          
 
         function getFields() {
             var configRows = angular.copy($scope.config.rows);
@@ -75,6 +94,7 @@
                 return;
             }
             if ($scope.config.includeAll) {
+                // create an Others column for the remaining include all fields
                 if (!configRows[0].columns[configRows[0].columns.length - 1]['includeAll']) {
                     configRows[0].columns.push({
                         'fields': getMissingFields(),
@@ -83,6 +103,7 @@
                     });
                 }
             }
+            // On Config edit, if include_all is unchecked remove the column "Others"
             else {
                 if (configRows[0].columns[configRows[0].columns.length - 1].hasOwnProperty('includeAll')) {
                     configRows[0].columns.pop();
@@ -126,6 +147,7 @@
                         fieldData: $scope.entity.fields[field]
                     };
                 }
+                //Show Hidden fields, visiblity true
                 if (fieldValue.fieldData) {
                     fieldValue.fieldData.visible = true;
                     fieldValue.fieldData.visibility = true;
@@ -138,91 +160,23 @@
             field.value = value;
             $scope.viewValueChange(field);
             $rootScope.$broadcast('csFields:viewValueChange', {
-              field: field,
-              entity: $scope.entity
+                field: field,
+                entity: $scope.entity
             });
-          }
-      
-          function viewValueChange(field) {
+        }
+
+        function viewValueChange(field) {
             if ($scope.entity.fields.hasOwnProperty(field.name)) {
-              $scope.entity.fields[field.name].value = field.value;
-              $scope.entity.fields[field.name].saving = true;
-              $timeout(function() {
-                $scope.entity.fields[field.name].saving = false;
-              }, 1000);
-              $scope.entity.evaluateAllFields();
-              return true;
+                $scope.entity.fields[field.name].value = field.value;
+                $scope.entity.fields[field.name].saving = true;
+                $timeout(function () {
+                    $scope.entity.fields[field.name].saving = false;
+                }, 1000);
+                $scope.entity.evaluateAllFields();
+                return true;
             }
             return false;
-          }
+        }
 
-
-        // function getSelectedFields(record) {
-        //     $scope.dataToDisplay = [];
-        //     $scope.dataToDisplay1 = [];
-        //     if (record.originalData === undefined) {
-        //         return 'error';
-        //     }
-        //     var numberOfFields = $scope.config.moduleFields.length;
-        //     if ($scope.config.includeExclude === "Include") {
-        //         for (var i = 0; i < numberOfFields; i++) {
-        //             var recordValue = record.originalData[$scope.config.moduleFields[i].name];
-        //             if ($scope.config.hideEmptyFields && (recordValue === undefined || recordValue === null)) {
-        //                 continue;
-        //             }
-        //             $scope.dataToDisplay.push({
-        //                 'value': recordValue,
-        //                 'name': $scope.config.moduleFields[i].name,
-        //                 'title': $scope.config.moduleFields[i].title
-        //             })
-        //             $scope.dataToDisplay1 = $scope.config.moduleFields;
-        //         }
-        //     }
-        //     else {
-        //         var names = [];
-        //         if (!$scope.config.includeAll) {
-        //             for (var i = 0; i < numberOfFields; i++) {
-        //                 names.push($scope.config.moduleFields[i].name);
-        //             }
-        //         }
-        //         excludeFields(record, names);
-        //     }
-        // }
-
-        // function excludeFields(record, names) {
-        //     for (const key in record.originalData) {
-        //         if (key === undefined) {
-        //             continue;
-        //         }
-        //         var recordValue = record.originalData[key];
-        //         if ($scope.config.hideEmptyFields && (recordValue === undefined || recordValue === null)) {
-        //             continue;
-        //         }
-        //         if (!names.includes(key) && !key.startsWith('@') && (key in record.fields)) {
-        //             $scope.dataToDisplay.push({
-        //                 'value': record.originalData[key],
-        //                 'name': key,
-        //                 'title': record.fields[key].title
-        //             });
-        //         }
-        //     }
-
-        // }
-
-        // function generateStructure() {
-        //     var numberOfFields = $scope.config.moduleFields.length;
-        //     if (numberOfFields % 2 === 0) {
-        //         var column = numberOfFields / 2 - 1;
-        //     }
-        //     else {
-        //         var column = numberOfFields / 2;
-        //     }
-        //     $scope.column = [];
-        //     for (var i = 0; i < column; i++) {
-        //         for (var j = 0; j < 2; j++) {
-        //             $scope.column[i].row[j] = $scope.config.moduleFields[i * 1 + j];
-        //         }
-        //     }
-        // }
     }
 })();

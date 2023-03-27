@@ -13,38 +13,7 @@
                 <label class="control-label" for="formGroupTitle">Title (leave blank for no title)</label>
                 <input class="form-control" type="text" id="formGroupTitle" data-ng-model="config.title" />
             </div>
-            <hr>
-            <span class="custom-toggle-btn pull-left display-block">
-                <span class="custom-toggle-btn-status margin-top-md font-size-12 text-left">Include All</span>
-                <span
-                    data-uib-tooltip="Adds a Column named 'Others', select fields to exclude from the remaining fields"
-                    data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
-                <span class="custom-toggle-btn-wrapper edit-toggles pull-right">
-                    <span class="custom-toggle-switch-base"
-                        data-ng-class="config.includeAll ? 'custom-toggle-active': 'custom-toggle-inactive'">
-                        <input id="IncludeAll" type="checkbox" name="includeAll" type="checkbox"
-                            class="custom-toggle-input" data-ng-model="config.includeAll">
-                        <span class="custom-toggle-handle"></span>
-                        <span class="custom-toggle-root"></span>
-                    </span>
-                    <span class="custom-toggle-track"></span>
-                </span>
-            </span>
-            <br>
-            <hr>
-            <div data-ng-if="config.includeAll">
-                <div class="cs-select">
-                    <ui-select name="excludeFieldsArray" data-ng-model="config.excludeFieldsArray" multiple
-                        class="custom-multi-select" tagging="undefined" tagging-label="false">
-                        <ui-select-match placeholder="Fields To Exclude">{{$item.title}}</ui-select-match>
-                        <ui-select-choices repeat="option in fieldsArray | filter: $select.search" refresh-delay="0"
-                            ng-show="($select.items.length >= 0) || ">
-                            <div ng-bind="option.title"></div>
-                        </ui-select-choices>
-                    </ui-select>
-                    <span class="fa fa-sort-desc"></span>
-                </div>
-            </div>
+
             <hr>
             <div>
                 <div class="row margin-bottom-md">
@@ -69,8 +38,8 @@
                             <div class="pull-right margin-right-md" data-ng-show="widget.name === 'fieldsOfInterest'">
                                 <div class="checkbox margin-top-0">
                                     <label for="allReadOnly">
-                                        <input type="checkbox" id="allReadOnly" data-ng-model="allReadOnly"
-                                            data-ng-change="applyDefaults('readOnly', allReadOnly)" />All Read-Only
+                                        <input type="checkbox" id="allReadOnly" data-ng-model="config.allReadOnly"
+                                            data-ng-change="applyDefaults('readOnly', config.allReadOnly)" />All Read-Only
                                         <span
                                             data-uib-tooltip="If checked, all fields will display as read-only regardless of permissions."
                                             data-tooltip-append-to-body="true"><i
@@ -81,8 +50,8 @@
                             <div class="pull-right margin-right-md" data-ng-show="widget.name === 'fieldsOfInterest'">
                                 <div class="checkbox margin-top-0">
                                     <label for="allHighlightMode">
-                                        <input type="checkbox" id="allHighlightMode" data-ng-model="allHighlightMode"
-                                            data-ng-change="applyDefaults('highlightMode', allHighlightMode)" />All
+                                        <input type="checkbox" id="allHighlightMode" data-ng-model="config.allHighlightMode"
+                                            data-ng-change="applyDefaults('highlightMode', config.allHighlightMode)" />All
                                         Inline
                                         <span
                                             data-uib-tooltip="If not checked, all fields will display an edit button instead of being click-to-edit."
@@ -91,23 +60,22 @@
                                     </label>
                                 </div>
                             </div>
+                            <!-- / -->
+                            <div class="pull-right margin-right-md" data-ng-show="widget.name === 'fieldsOfInterest'">
+                                <div class="checkbox margin-top-0">
+                                    <label for="hideEmptyFields">
+                                        <input type="checkbox" id="hideEmptyFields" data-ng-model="config.hideEmptyFields"
+                                             />Hide Empty Fields
+                                        <span
+                                            data-uib-tooltip="If checked all empty fields will be hidden."
+                                            data-tooltip-append-to-body="true"><i
+                                                class="icon icon-information font-Size-13"></i></span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="padding-top-lg form-horizontal checkbox">
-                    <label for="hideEmptyFields">
-                        <input id="hideEmptyFields" class="margin-top-0" type="checkbox" name="hideEmptyFields"
-                            data-ng-model="config.hideEmptyFields">Hide Empty
-                        Fields
-                    </label>
-                    <span data-uib-tooltip="If checked it will hide the empty fields"
-                        data-tooltip-append-to-body="true">
-                        <i class="margin-left-sm icon icon-information font-Size-13"></i>
-                    </span>
-
-                </div>
-
-                <hr>
 
                 <div class="row margin-top-lg display-block" data-ng-model="config.rows[0].columns">
                     <div id="template-column-{{$index}}" data-column="{{$index}}"
@@ -124,8 +92,7 @@
                                     <div
                                         class="panel-heading panel-default padding-right-0 widget-panel small text-capitalize">
                                         <span>
-                                            <i class="icon icon-more padding-right-md"></i>{{ fields[field.name].title
-                                            }}
+                                            <i class="icon icon-more padding-right-md"></i>{{ fields[field.name].title }}
                                         </span>
                                         <div class="remove-widget-container fields-list">
                                             <a type="button" class="btn btn-sm btn-default pull-right margin-right-sm"
@@ -170,7 +137,7 @@
                                             </div>
                                             <input type="checkbox" id="read-only-checkbox-edit-form-group"
                                                 class="margin-top-sm" data-ng-model="field.readOnly"
-                                                data-ng-change="$parent.$parent.$parent.allReadOnly = !field.readOnly ? false : $parent.$parent.$parent.allReadOnly" />
+                                                data-ng-change="$parent.$parent.$parent.config.allReadOnly = !field.readOnly ? false : $parent.$parent.$parent.config.allReadOnly" />
                                         </div>
                                     </div>
                                     <div class="row padding-bottom-sm"
@@ -184,7 +151,7 @@
                                             </div>
                                             <input type="checkbox" id="highlightMode" class="margin-top-sm"
                                                 data-ng-model="field.highlightMode"
-                                                data-ng-change="$parent.$parent.$parent.allHighlightMode = !field.highlightMode ? false : $parent.$parent.$parent.allHighlightMode" />
+                                                data-ng-change="$parent.$parent.$parent.config.allHighlightMode = !field.highlightMode ? false : $parent.$parent.$parent.config.allHighlightMode" />
                                         </div>
                                     </div>
                                 </div>
@@ -192,10 +159,51 @@
                         </ul>
                     </div>
                 </div>
+                <div id="showAllRemainingFields">
+                    <span class="custom-toggle-btn pull-left display-block">
+                        <span class="custom-toggle-btn-status margin-top-md font-size-12 text-left">Show All Remaining Fields</span>
+                        <span
+                            data-uib-tooltip="Adds a column named 'Others' that includes all the remaining fields"
+                            data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
+                        <span class="custom-toggle-btn-wrapper edit-toggles pull-right" style="margin-top:-5px">
+                            <span class="custom-toggle-switch-base"
+                                data-ng-class="config.includeAll ? 'custom-toggle-active': 'custom-toggle-inactive'">
+                                <input id="IncludeAll" type="checkbox" name="includeAll" type="checkbox"
+                                    class="custom-toggle-input" data-ng-model="config.includeAll">
+                                <span class="custom-toggle-handle"></span>
+                                <span class="custom-toggle-root"></span>
+                            </span>
+                            <span class="custom-toggle-track"></span>
+                        </span>
+                    </span>
+                </div>
+                <div data-ng-if="config.includeAll">
+                    <hr class="visibility-hidden">
 
-
+                    <div>
+                        <span class="custom-toggle-btn-status margin-top-md font-size-12 text-left">Exclude Following Fields</span>
+                        <span
+                        data-uib-tooltip="Select fields to exclude from the 'Others' column"
+                        data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
+                    </div>
+                    <div class="cs-select">
+                        <ui-select name="excludeFieldsArray" data-ng-model="config.excludeFieldsArray" multiple
+                            class="custom-multi-select" tagging="undefined" tagging-label="false">
+                            <ui-select-match placeholder="Fields To Exclude">{{$item.title}}</ui-select-match>
+                            <ui-select-choices repeat="option in fieldsArray | filter: $select.search" refresh-delay="0"
+                                ng-show="($select.items.length >= 0) || ">
+                                <div ng-bind="option.title"></div>
+                            </ui-select-choices>
+                        </ui-select>
+                        <span class="fa fa-sort-desc"></span>
+                        <div>
+                            <hr class="visibility-hidden">
+                            <hr class="visibility-hidden">
+                            <hr class="visibility-hidden">
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </div>
     </div>
     <div class="modal-footer">
