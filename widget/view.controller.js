@@ -117,7 +117,6 @@
                 });
             });
             $scope.rows = configRows;
-            console.log(configRows);
         }
 
         function updateFieldValues(fields) {

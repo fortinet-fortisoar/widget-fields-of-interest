@@ -5,15 +5,14 @@
     "version": "1.0.0",
     "metadata": {
         "size": "lg",
-        "description": "",
+        "description": "Fields of interest widget displays selected fields for an individual record, in its detail view, in a module, regardless of the visiblity constraint.",
         "pages": [
             "View Panel"
         ],
-        "certified": "No",
-        "publisher": "Community",
+        "certified": "Yes",
+        "publisher": "Fortinet",
         "compatibility": [
             "7.3.1"
         ]
-    },
-    "development": true
+    }
 }
