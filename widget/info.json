@@ -1,0 +1,23 @@
+{
+    "name": "fieldsOfInterest",
+    "title": "Fields Of Interest",
+    "subTitle": "Fields Of Interest",
+    "version": "1.0.0",
+    "published_date": 1679989083,
+    "metadata": {
+        "size": "lg",
+        "help_online":"",
+        "description": "Fields of interest widget displays selected fields for an individual record, in its detail view, in a module, regardless of the visiblity constraint.",
+        "pages": [
+            "View Panel"
+        ],
+        "certified": "Yes",
+        "publisher": "Fortinet",
+        "snapshots": [
+            ""
+        ],
+        "compatibility": [
+            "7.3.1"
+        ]
+    }
+}
