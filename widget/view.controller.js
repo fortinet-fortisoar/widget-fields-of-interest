@@ -19,6 +19,7 @@
             });
             init();
         });
+        $scope.init = init;
 
         if (!$scope.entity) {
             $scope.entity = FormEntityService.get();
@@ -66,24 +67,22 @@
                     });
                 }
             }
-            missingFields = sortByName(missingFields);
             return missingFields;
         }
         
-        function sortByName(missingFields) {
-            missingFields.sort(function(field1, field2) {
-              var nameA = field1.name.toUpperCase(); // ignore upper and lowercase
-              var nameB = field2.name.toUpperCase(); // ignore upper and lowercase
+        function sortByTitle(arraytoSort) {
+            arraytoSort.sort(function(field1, field2) {
+              var nameA = field1.fieldData.title.toUpperCase(); // ignore upper and lowercase
+              var nameB = field2.fieldData.title.toUpperCase(); // ignore upper and lowercase
               if (nameA < nameB) {
                 return -1;
               }
               if (nameA > nameB) {
                 return 1;
               }
-              // names must be equal
+              // Title must be equal
               return 0;
             });
-            return missingFields;
           }
           
 
@@ -117,6 +116,10 @@
                 });
             });
             $scope.rows = configRows;
+            //to sort others column
+            if($scope.config.includeAll){
+                sortByTitle($scope.rows[0].columns[$scope.rows[0].columns.length - 1].fields);
+            }
         }
 
         function updateFieldValues(fields) {

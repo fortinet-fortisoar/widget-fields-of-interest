@@ -10,10 +10,25 @@
                 data-ng-class="{'fa-caret-up': !collapsed, 'fa-caret-down': collapsed}"></span>
         </div>
     </div>
+
+
     <div data-ng-hide="collapsed">
+
         <div class="padding-left-lg padding-bottom-lg">
             <div class="row section-widget edit-form-widget">
                 <cs-spinner data-ng-hide="initialized" data-show-background="true"></cs-spinner>
+                <div class="display-block margin-left-md padding-top-md padding-left-sm">
+                    <div class="checkbox margin-top-0">
+                        <label for="hideEmptyFields">
+                            <input class="margin-top-0" type="checkbox" id="hideEmptyFields" data-ng-model="config.hideEmptyFields" data-ng-change="init()"
+                                 />Hide Empty Fields
+                            <span
+                                data-uib-tooltip="If checked all empty fields will be hidden."
+                                data-tooltip-append-to-body="true"><i
+                                    class="icon icon-information font-Size-13"></i></span>
+                        </label>
+                    </div>
+                </div>
                 <div class="row" data-ng-repeat="row in rows" data-ng-show="initialized" data-ng-class="{'no-widget-title': !config.title && $first}">
                   <div data-ng-repeat="column in ::row.columns" data-ng-class="::column.style" class="{{row.style}}">
                     <p class="padding-top-lg">{{column.columnTitle}}</p>
