@@ -14,9 +14,9 @@
         "certified": "Yes",
         "publisher": "Fortinet",
         "snapshots": [
-            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/docs/media/edit-fields-of-interest.png",
-            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/docs/media/detailed-view.png",
-            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/docs/media/detailed-view-hidden.png"
+            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/widget/images/edit-fields-of-interest.png",
+            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/widget/images/detailed-view.png",
+            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/widget/images/detailed-view-hidden.png"
         ],
         "compatibility": [
             "7.3.1"
