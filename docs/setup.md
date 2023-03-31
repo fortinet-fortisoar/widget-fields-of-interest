@@ -19,9 +19,6 @@
 | Title                                    | Specify the heading or title of the visual depiction of each record node in the group. |
 | Select Field Dropdown                    | Select the fields to display on the the detailed view page.|
 | Column Title                             | Give a sutaible column title for the select fields.|
-
-| Checkbox                                 | Description                              |
-| ---------------------------------------- | ---------------------------------------- |
 | Show All Remaining Fields                | Checkbox, if enabled, an additional column 'Others' will be created with the remaining fields.|
 | Hide Empty fields                        | To hide all the empty fields. |
 | All inline                               | If not checked, all fields will display an edit button instead of being click-to-edit.|  
