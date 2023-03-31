@@ -9,6 +9,9 @@
 
 # Configuration
 
+![](./media/edit-fields-of-interest.png)
+
+
 ## Fields of Interest Widget Settings
 
 | Fields                                   | Description                              |
