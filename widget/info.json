@@ -6,7 +6,7 @@
     "published_date": 1679989083,
     "metadata": {
         "size": "lg",
-        "help_online":"",
+        "help_online":"https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/README.md",
         "description": "Fields of interest widget displays selected fields for an individual record, in its detail view, in a module, regardless of the visiblity constraint.",
         "pages": [
             "View Panel"
@@ -14,7 +14,9 @@
         "certified": "Yes",
         "publisher": "Fortinet",
         "snapshots": [
-            ""
+            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/docs/media/edit-fields-of-interest.png",
+            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/docs/media/detailed-view.png",
+            "https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.0/docs/media/detailed-view-hidden.png"
         ],
         "compatibility": [
             "7.3.1"
