@@ -15,6 +15,10 @@
 
 **Widget**
 
+A checkbox is provided at the detailed view to hide empty fields at run time.
+
+Detailed view
 ![](./media/detailed-view.png)
 
-
+Detailed view with hide empty fields checkbox ticked
+![](./media/detailed-view-hidden.png)
