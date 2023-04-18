@@ -173,7 +173,7 @@
                 $scope.entity.fields[field.name].saving = true;
                 $timeout(function () {
                     $scope.entity.fields[field.name].saving = false;
-                }, 1010);
+                }, 1000);
                 $scope.entity.evaluateAllFields();
                 return true;
             }
