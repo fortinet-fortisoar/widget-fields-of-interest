@@ -2,11 +2,11 @@
 (function () {
     angular
         .module('cybersponse')
-        .controller('fieldsOfInterest100Ctrl', fieldsOfInterest100Ctrl);
+        .controller('fieldsOfInterest101Ctrl', fieldsOfInterest101Ctrl);
 
-    fieldsOfInterest100Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', 'Modules', 'viewTemplate', '$timeout'];
+    fieldsOfInterest101Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', 'Modules', 'viewTemplate', '$rootScope', '$timeout'];
 
-    function fieldsOfInterest100Ctrl($scope, $state, Entity, FormEntityService, Modules, viewTemplate, $rootScope, $timeout) {
+    function fieldsOfInterest101Ctrl($scope, $state, Entity, FormEntityService, Modules, viewTemplate, $rootScope, $timeout) {
         $scope.id = $state.params.id;
         $scope.module = $state.params.module;
         $scope.updateFieldValues = updateFieldValues;
@@ -173,7 +173,7 @@
                 $scope.entity.fields[field.name].saving = true;
                 $timeout(function () {
                     $scope.entity.fields[field.name].saving = false;
-                }, 1000);
+                }, 1010);
                 $scope.entity.evaluateAllFields();
                 return true;
             }

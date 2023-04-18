@@ -2,11 +2,11 @@
 (function () {
     angular
         .module('cybersponse')
-        .controller('editFieldsOfInterest100Ctrl', editFieldsOfInterest100Ctrl);
+        .controller('editFieldsOfInterest101Ctrl', editFieldsOfInterest101Ctrl);
 
-    editFieldsOfInterest100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService'];
+    editFieldsOfInterest101Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService'];
 
-    function editFieldsOfInterest100Ctrl($scope, $uibModalInstance, config, _, $state, Entity,  widget, ViewTemplateService) {
+    function editFieldsOfInterest101Ctrl($scope, $uibModalInstance, config, _, $state, Entity,  widget, ViewTemplateService) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.widget = widget;
