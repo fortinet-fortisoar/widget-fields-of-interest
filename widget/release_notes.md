@@ -1,2 +1,8 @@
 # What's New
-Minor bug fix:
+Minor bug fixes.
+ - Widget now remembers a change in 'Picklist' value.
+
+
+
+
+
