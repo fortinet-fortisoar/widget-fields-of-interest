@@ -1,7 +1,7 @@
 {
     "name": "fieldsOfInterest",
     "title": "Fields Of Interest",
-    "subTitle": "Fields Of Interest",
+    "subTitle": "Select fields to display in the detailed view, regardless of the 'Visiblity constraint'",
     "version": "1.0.1",
     "published_date": 1679989083,    
     "releaseNotes": "available",
