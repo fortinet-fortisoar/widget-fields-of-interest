@@ -1,8 +1,8 @@
 # What's New
-Minor bug fixes:
-    -Persists a change in 'Picklist' value.
-    
+Minor bug fixes:    
     -Usability improvements.
+    -Persists a change in 'Picklist' value.
+
 
 
 
