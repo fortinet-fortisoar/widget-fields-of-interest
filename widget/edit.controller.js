@@ -11,6 +11,7 @@
         $scope.save = save;
         $scope.widget = widget;
         $scope.config = config;
+        $scope.config.hideEmptyFieldsCheckbox = $scope.config.hideEmptyFieldsCheckbox ? true : false;
         $scope.config.rows = $scope.config.rows || [{
             columns: [{
                 fields: []
