@@ -4,14 +4,14 @@
         .module('cybersponse')
         .controller('editFieldsOfInterest101Ctrl', editFieldsOfInterest101Ctrl);
 
-    editFieldsOfInterest101Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService'];
+    editFieldsOfInterest101Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService', 'CommonUtils'];
 
-    function editFieldsOfInterest101Ctrl($scope, $uibModalInstance, config, _, $state, Entity,  widget, ViewTemplateService) {
+    function editFieldsOfInterest101Ctrl($scope, $uibModalInstance, config, _, $state, Entity,  widget, ViewTemplateService, CommonUtils) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.widget = widget;
         $scope.config = config;
-        $scope.config.hideEmptyFieldsCheckbox = $scope.config.hideEmptyFieldsCheckbox ? true : false;
+        $scope.config.hideEmptyFieldsCheckbox = !CommonUtils.isUndefined($scope.config.hideEmptyFieldsCheckbox) ? $scope.config.hideEmptyFieldsCheckbox : true;
         $scope.config.rows = $scope.config.rows || [{
             columns: [{
                 fields: []
