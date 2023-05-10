@@ -14,12 +14,13 @@
 
 ## Fields of Interest Widget Settings
 
-| Fields                                   | Description                              |
-| ---------------------------------------- | ---------------------------------------- |
-| Title                                    | Specify the heading or title of the visual depiction of each record node in the group. |
-| Select Field Dropdown                    | Select the fields to display on the the detailed view page.|
-| Column Title                             | Give a sutaible column title for the select fields.|
-| Show All Remaining Fields                | Checkbox, if enabled, an additional column 'Others' will be created with the remaining fields.|
-| Hide Empty fields                        | To hide all the empty fields. |
-| All inline                               | If not checked, all fields will display an edit button instead of being click-to-edit.|  
-| All Read-Only                            | If checked, all fields will display as read-only regardless of permissions.|  
+| Fields                    | Description                              |
+| ------------------------- | ---------------------------------------- |
+| Title                     | Specify the heading or title of the visual depiction for the group of fields displayed in this widget. |
+| Select a field Dropdown   | Select the fields that you want to include in this widget to be displayed on the the detailed view of the module records. |
+| Layout                    | Select the layout of the widget, i.e., choose between a single column (default), 2-column structure, or a 3-column structure. |
+| Show Field Visibility Checkbox         | To show the 'Hide Empty Fields' Checkbox in detailed view of the module. |
+| All Inline                | Select this option to make all fields within the widget as inline fields, i.e., fields that can be edited using click-to-edit. If this option is cleared, then all fields display an edit button for editing purposes. |
+| All Read-Only             | Select this option to make all fields within the widget as read-only, irrespective of assigned permissions. |
+| Column Title              | (Optional) Specify a suitable column title for the group of selected fields. |
+| Show All Remaining Fields | A toggle button that when enabled, adds an additional column named 'Others' that contains all the remaining fields of the module. <br /> If you enable **Show All Remaining Fields**, then from the **Exclude Following Fields** drop-down, you can select fields that you do not want to display in the 'Others' column, i.e., these fields will not be displayed in this widget on the detail view of the module record. |

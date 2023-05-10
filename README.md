@@ -12,7 +12,7 @@
 
 
 ## Overview
-Fields of interest widget displays selected fields for an individual record, in its detail view, in a module, regardless of the visiblity constraint. The widget defines what information users require to add while creating a record. You can modify the widget of each module, independently of other modules.
+You can use the Fields Of Interest widget to display selected fields in the detail view of an individual module record, regardless of any visibility constraint that might have been set. This widget also allows you the option of choosing whether you want to hide or show record fields that are empty. This widget is configurable separately for each module.
 
 
 ## Next Steps
