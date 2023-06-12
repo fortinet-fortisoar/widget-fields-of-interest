@@ -16,7 +16,7 @@
             columns: [{
                 fields: []
             }],
-            style : 'display-inline-block'
+            style : ''
         }];
 
         $scope.config.excludeFieldsArray = $scope.config.excludeFieldsArray ? $scope.config.excludeFieldsArray : [];
@@ -34,7 +34,7 @@
 
         $scope.module = $state.params.module;
         $scope.applyDefaults = applyDefaults;
-        $scope.config.allReadOnly = true;
+        $scope.config.allReadOnly = false;
         $scope.config.allHighlightMode = true;
         checkReadOnlyAndAllHighlight();
         loadAttributes();
