@@ -1,6 +1,6 @@
 ## Release Information
 
-- **Version**: 1.0.0
+- **Version**: 1.0.1
 
 - **Certified**: No
 
@@ -10,13 +10,14 @@
 
 - **Applicable**: View Panel
 
+- [Release Notes](./widget/release_notes.md)
+
 
 ## Overview
-Fields of interest widget displays selected fields for an individual record, in its detail view, in a module, regardless of the visiblity constraint. The widget defines what information users require to add while creating a record. You can modify the widget of each module, independently of other modules.
 
+**Fields of Interest** widget helps display selected fields in the detail view of an individual module record, regardless of any visibility constraint that might have been set. This widget also helps choose whether to hide or show empty record fields. This widget is configurable separately for each module.
 
 ## Next Steps
 
-| [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Usage](./docs/usage.md) | [Contents](./docs/contents.md) |
-|----------------------------------------------|------------------------------------------------|--------------------------|--------------------------------|
-
+| [Installation](./docs/setup.md#installation) | [Configuration](./docs/setup.md#configuration) | [Usage](./docs/usage.md) |
+|----------------------------------------------|------------------------------------------------|--------------------------|

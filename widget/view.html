@@ -1,8 +1,7 @@
-<div class="widget widget-container chart">
+<div class="widget widget-container ">
     <div class="display-flex-space-between margin-chart">
-        <div class="padding-right-0 padding-left-0 widget-dashboard-title-width"
-            data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-title-width' : 'widget-title-width'">
-            <h5 class="margin-top-0 margin-bottom-0 text-overflow ng-binding">{{ config.title }}</h5>
+        <div class="padding-right-0 padding-left-0 widget-dashboard-title-width">
+            <h5 class="custom-label-size margin-bottom-0 section-border padding-left-md">{{ config.title }}</h5>
         </div>
         <div class="padding-right-0 padding-left-0"
             data-ng-class="(page === 'dashboard' || page === 'reporting') ? 'widget-dashboard-actions-width' : 'widget-actions-width'">
@@ -14,14 +13,14 @@
 
     <div data-ng-hide="collapsed">
 
-        <div class="padding-left-lg padding-bottom-lg">
+        <div class="padding-bottom-lg">
             <div class="row section-widget edit-form-widget">
                 <cs-spinner data-ng-hide="initialized" data-show-background="true"></cs-spinner>
-                <div class="display-block margin-left-md padding-top-md padding-left-sm">
+                <div data-ng-if="config.hideEmptyFieldsCheckbox" class="display-block margin-left-md padding-top-md padding-left-sm">
                     <div class="checkbox margin-top-0">
                         <label for="hideEmptyFields">
-                            <input class="margin-top-0" type="checkbox" id="hideEmptyFields" data-ng-model="config.hideEmptyFields" data-ng-change="init()"
-                                 />Hide Empty Fields
+                            <input class="margin-top-0 "  type="checkbox" id="hideEmptyFields" data-ng-model="config.hideEmptyFields" data-ng-change="init()"/>
+                            <span class="control-label" style="margin-top: -3px;"> Hide Empty Fields </span>
                             <span
                                 data-uib-tooltip="If checked all empty fields will be hidden."
                                 data-tooltip-append-to-body="true"><i
@@ -31,7 +30,7 @@
                 </div>
                 <div class="row" data-ng-repeat="row in rows" data-ng-show="initialized" data-ng-class="{'no-widget-title': !config.title && $first}">
                   <div data-ng-repeat="column in ::row.columns" data-ng-class="::column.style" class="{{row.style}}">
-                    <p class="padding-top-lg">{{column.columnTitle}}</p>
+                    <p class="control-label text-underline padding-top-md" style="font-size: 12px !important; margin-bottom: 0px !important;">{{column.columnTitle}}</p>
                     <div data-ng-repeat="field in ::column.fields">
                       <div data-cs-editable-field data-field="field.fieldData" data-mode="row.mode" data-field-options="field.options" submit="submitField" data-change-method="notifyFieldChange" data-disabled="!field.fieldData.editable"></div>
                     </div>
