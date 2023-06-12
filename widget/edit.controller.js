@@ -2,11 +2,11 @@
 (function () {
     angular
         .module('cybersponse')
-        .controller('editFieldsOfInterest101Ctrl', editFieldsOfInterest101Ctrl);
+        .controller('editFieldsOfInterest102Ctrl', editFieldsOfInterest102Ctrl);
 
-    editFieldsOfInterest101Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService', 'CommonUtils'];
+    editFieldsOfInterest102Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService', 'CommonUtils'];
 
-    function editFieldsOfInterest101Ctrl($scope, $uibModalInstance, config, _, $state, Entity,  widget, ViewTemplateService, CommonUtils) {
+    function editFieldsOfInterest102Ctrl($scope, $uibModalInstance, config, _, $state, Entity,  widget, ViewTemplateService, CommonUtils) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.widget = widget;
@@ -16,7 +16,7 @@
             columns: [{
                 fields: []
             }],
-            style : 'display-inline-block'
+            style : ''
         }];
 
         $scope.config.excludeFieldsArray = $scope.config.excludeFieldsArray ? $scope.config.excludeFieldsArray : [];
@@ -34,7 +34,7 @@
 
         $scope.module = $state.params.module;
         $scope.applyDefaults = applyDefaults;
-        $scope.config.allReadOnly = true;
+        $scope.config.allReadOnly = false;
         $scope.config.allHighlightMode = true;
         checkReadOnlyAndAllHighlight();
         loadAttributes();
