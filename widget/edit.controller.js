@@ -16,7 +16,7 @@
             columns: [{
                 fields: []
             }],
-            style : ''
+            style : $scope.rowstyle
         }];
 
         $scope.config.excludeFieldsArray = $scope.config.excludeFieldsArray ? $scope.config.excludeFieldsArray : [];
