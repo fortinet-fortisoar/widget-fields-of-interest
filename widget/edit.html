@@ -15,7 +15,7 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="rowStyle">Row Style</label>
-                <input class="form-control" type="text" id="rowStyle" data-ng-model="rowstyle" />
+                <input class="form-control" type="text" id="rowStyle" data-ng-model="config.rows[0].style" />
             </div>
             <hr>
             <div>
@@ -192,7 +192,7 @@
                         <ui-select name="excludeFieldsArray" data-ng-model="config.excludeFieldsArray" multiple
                             class="custom-multi-select" tagging="undefined" tagging-label="false">
                             <ui-select-match placeholder="Fields To Exclude">{{$item.title}}</ui-select-match>
-                            <ui-select-choices repeat="option in fieldsArray | filter: $select.search" refresh-delay="0"
+                            <ui-select-choices repeat="option in fieldsArray | filter: fieldNotExists | filter: $select.search | orderBy: 'title'" refresh-delay="0"
                                 ng-show="($select.items.length >= 0) || ">
                                 <div ng-bind="option.title"></div>
                             </ui-select-choices>
