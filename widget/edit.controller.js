@@ -23,6 +23,7 @@
         $scope.changeStructure = changeStructure;
         $scope.alwaysUseEdit = ['checkbox', 'lookup', 'picklist', 'datetime'];
         $scope.fieldNotExists = fieldNotExists;
+        $scope.alreadyExcludedFields = alreadyExcludedFields;
         $scope.addField = addField;
         $scope.removeField = removeField;
         if($scope.config.hideEmptyFields === undefined){
@@ -83,6 +84,11 @@
         function fieldNotExists(field) {
             var fields = _.flatten(_.pluck($scope.config.rows[0].columns, 'fields'));
             var fieldNames = _.pluck(fields, 'name');
+            return fieldNames.indexOf(field.name) === -1;
+        }
+
+        function alreadyExcludedFields(field) {
+            var fieldNames = _.pluck($scope.config.excludeFieldsArray, 'name');
             return fieldNames.indexOf(field.name) === -1;
         }
 
