@@ -19,7 +19,7 @@
             style : $scope.rowstyle
         }];
 
-        $scope.config.excludeFieldsArray = $scope.config.excludeFieldsArray ? $scope.config.excludeFieldsArray : [];
+        $scope.config.excludeFieldsArray = $scope.config.excludeFieldsArray ? $scope.config.excludeFieldsArray.map(({ title, name }) => ({ title, name })) : [];
         $scope.changeStructure = changeStructure;
         $scope.alwaysUseEdit = ['checkbox', 'lookup', 'picklist', 'datetime'];
         $scope.fieldNotExists = fieldNotExists;
