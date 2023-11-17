@@ -30,7 +30,7 @@
                 </div>
                 <div class="row" data-ng-repeat="row in rows" data-ng-show="initialized" data-ng-class="{'no-widget-title': !config.title && $first}">
                   <div data-ng-repeat="column in ::row.columns" data-ng-class="::column.style" class="{{row.style}}">
-                    <p class="control-label text-underline padding-top-md" style="font-size: 12px !important; margin-bottom: 0px !important;">{{column.columnTitle}}</p>
+                    <h6 class="text-underline" style="margin: 0 0 1em;">{{column.columnTitle}}</h6>
                     <div data-ng-repeat="field in ::column.fields">
                       <div data-cs-editable-field data-field="field.fieldData" data-mode="row.mode" data-field-options="field.options" submit="submitField" data-change-method="notifyFieldChange" data-disabled="!field.fieldData.editable"></div>
                     </div>
