@@ -15,8 +15,7 @@
         $scope.config.rows = $scope.config.rows || [{
             columns: [{
                 fields: []
-            }],
-            style : $scope.rowstyle
+            }]
         }];
 
         $scope.config.excludeFieldsArray = $scope.config.excludeFieldsArray ? $scope.config.excludeFieldsArray.map(({ title, name }) => ({ title, name })) : [];
