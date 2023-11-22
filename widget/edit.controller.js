@@ -34,7 +34,7 @@
 
         $scope.module = $state.params.module;
         $scope.applyDefaults = applyDefaults;
-        $scope.config.allReadOnly = false;
+        $scope.config.allReadOnly = true;
         $scope.config.allHighlightMode = true;
         checkReadOnlyAndAllHighlight();
         loadAttributes();
