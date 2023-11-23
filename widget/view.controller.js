@@ -60,7 +60,7 @@
             })
             for (const key in $scope.entity.fields) {
                 if (!selectedFields.includes(key) && !excludeArray.includes(key) && $scope.entity.fields[key].type !== 'manyToMany'
-                   && $scope.entity.fields[key].type !== 'oneToMany') {
+                   && $scope.entity.fields[key].type !== 'oneToMany' && $scope.entity.fields[key].type !== null) {
                     missingFields.push({
                         name: key,
                         readOnly: true
