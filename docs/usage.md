@@ -27,16 +27,22 @@ To add this widget to the detail view of a module record, perform the following 
 
    ![](./media/edit-fields-of-interest.png)
 
-   1. Enter the title of this widget
+   - Enter the `Title` under the **Title (Leave Blank For No Title)** field of this widget
+
+   - Enter the **Row Style**, 
+      - if value is added as `display-inline-block` then in detailed view field value will display as below
+      ![](./media/detailed-view-inline.png)
+      - if leave blank, in detailed view data will be display as below
+      ![](./media/detailed-view-no-inline.png)
     
-   2. Select a column layout under **Layout**. You can select from following options:
+   - Select a column layout under **Layout**. You can select from following options:
       - Single-column structure
       - 2-column structure
       - 3-column structure
 
-   3. Select the fields to be added to this widget and click the **Add** button.
+   - Select the fields to be added to this widget and click the **Add** button.
    
-   4. To arrange fields, drag-and-drop them to respective columns.
+   - To arrange fields, drag-and-drop them to respective columns.
 
       - Select the checkbox **Show Field Visibility Checkbox** to display the *Hide Empty Fields* checkbox in detailed view of the module.
       - Select the checkbox **All Inline** to make the fields editable.
