@@ -1,18 +1,18 @@
 {
     "name": "fieldsOfInterest",
     "title": "Fields Of Interest",
-    "subTitle": "Select fields to display in the detailed view, regardless of the 'Visiblity constraint'",
+    "subTitle": "Select fields to display in the detailed view, regardless of the 'Visibility Constraint'",
     "version": "1.0.2",
     "published_date": 1679989083,    
     "releaseNotes": "available",
     "metadata": {
         "size": "lg",
         "help_online":"https://github.com/fortinet-fortisoar/widget-fields-of-interest/blob/release/1.0.2/README.md",
-        "description": "Fields of interest widget displays selected fields for an individual record, in its detail view, in a module, regardless of the visiblity constraint.",
+        "description": "The 'Fields of Interest' widget shows chosen fields for an individual record in its detailed view within a module, regardless of visibility constraints.",
         "pages": [
             "View Panel"
         ],
-        "certified": "No",
+        "certified": "Yes",
         "publisher": "Fortinet",
         "snapshots": [
             "https://repo.fortisoar.fortinet.com/fsr-widgets/fieldsOfInterest-1.0.2/images/edit-fields-of-interest.png",

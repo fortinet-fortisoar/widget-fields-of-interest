@@ -1,9 +1,7 @@
 # What's New
 
-## Enhancements
-
-- Renamed **Hide Empty fields** checkbox to **Show Field visibility**
-
-## Bug fixes
-
-- Fixed an issue where a drop-down field added to the widget returned to its originally selected value i.e. the selected value in the picklist did not persist
+## Bug Fixes:
+- Enhanced column heading appearance
+- Added "Row Style" for customizable field display in the widget
+- Optimized "Exclude Following Fields" lookup to display only eligible fields
+- Streamlined "Others" column to show only necessary fields
