@@ -85,7 +85,7 @@ The following image displays the detailed view of an alert record when the **Hid
 
 The following image displays the detailed view of an alert record when the **Hide Empty Fields** checkbox is cleared.
 
-![](./media/detailed-view.png)
+![](./media/alert-detailed-view.png)
 
 | [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) |
 |-----------------------------------------|-------------------------------------------|

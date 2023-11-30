@@ -2,7 +2,7 @@
 
 ## Enhancements
 
-- Enhanced the appearance of column headings as they appear in the widget. - Prominence
+- Enhanced the appearance of column headings so they appear more prominent in the widget.
 
 - Added a new **Row Style** field that customizes the layout of the labels and their values
 
