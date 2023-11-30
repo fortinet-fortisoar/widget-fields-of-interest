@@ -4,7 +4,7 @@
 
 - Enhanced the appearance of column headings as they appear in the widget. - Prominence
 
-- Added a **Row Style** field for customizable field display in the widget
+- Added a new **Row Style** field that customizes the layout of the labels and their values
 
 ## Bug Fixes
 
