@@ -1,7 +1,17 @@
 # What's New
 
-## Bug Fixes:
-- Enhanced column heading appearance
-- Added "Row Style" for customizable field display in the widget
-- Optimized "Exclude Following Fields" lookup to display only eligible fields
-- Streamlined "Others" column to show only necessary fields
+## Enhancements
+
+- Enhanced the appearance of column headings so they appear more prominent in the widget.
+
+- Added a new **Row Style** field that customizes the layout of the labels and their values
+
+## Bug Fixes
+
+- Optimized **Exclude Following Fields** lookup field to display only eligible fields.
+
+    - Implemented the Alphabetical sorting in the **Others** column, in the record's detailed view.
+
+- Streamlined **Others** column to show only necessary fields, i.e., system fields like `UUID`, `Assignee`, and others are not visible anymore.
+
+- Fixed an issue where the fields were hidden in detailed view but persisted edit view under **Exclude Following Fields**.
