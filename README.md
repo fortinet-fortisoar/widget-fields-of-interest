@@ -1,8 +1,8 @@
 ## Release Information
 
-- **Version**: 1.0.1
+- **Version**: 1.0.2
 
-- **Certified**: No
+- **Certified**: Yes
 
 - **Publisher**: Fortinet  
 
@@ -15,7 +15,7 @@
 
 ## Overview
 
-**Fields of Interest** widget helps display selected fields in the detail view of an individual module record, regardless of any visibility constraint that might have been set. This widget also helps choose whether to hide or show empty record fields. This widget is configurable separately for each module.
+The **Fields of Interest** widget helps display selected fields in the detail view of an individual module record, regardless of any visibility constraint that might have been set. This widget also helps choose whether to hide or show empty record fields. This widget is configurable separately for each module.
 
 ## Next Steps
 

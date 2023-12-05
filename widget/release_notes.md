@@ -2,8 +2,16 @@
 
 ## Enhancements
 
-- Renamed **Hide Empty fields** checkbox to **Show Field visibility**
+- Enhanced the appearance of column headings so they appear more prominent in the widget.
 
-## Bug fixes
+- Added a new **Row Style** field that customizes the layout of the labels and their values
 
-- Fixed an issue where a drop-down field added to the widget returned to its originally selected value i.e. the selected value in the picklist did not persist
+## Bug Fixes
+
+- Optimized **Exclude Following Fields** lookup field to display only eligible fields.
+
+    - Implemented the Alphabetical sorting in the **Others** column, in the record's detailed view.
+
+- Streamlined **Others** column to show only necessary fields, i.e., system fields like `UUID`, `Assignee`, and others are not visible anymore.
+
+- Fixed an issue where the fields were hidden in detailed view but persisted edit view under **Exclude Following Fields**.

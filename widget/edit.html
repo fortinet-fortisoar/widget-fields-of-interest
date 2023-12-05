@@ -13,7 +13,10 @@
                 <label class="control-label" for="formGroupTitle">Title (leave blank for no title)</label>
                 <input class="form-control" type="text" id="formGroupTitle" data-ng-model="config.title" />
             </div>
-
+            <div class="form-group">
+                <label class="control-label" for="rowStyle">Row Style</label>
+                <input class="form-control" type="text" id="rowStyle" data-ng-model="config.rows[0].style" />
+            </div>
             <hr>
             <div>
                 <div class="row margin-bottom-md">
@@ -165,18 +168,17 @@
                         <span
                             data-uib-tooltip="Adds a column named 'Others' that includes all the remaining fields"
                             data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
-                        <span class="custom-toggle-btn-wrapper edit-toggles pull-right" style="margin-top:-5px">
-                            <span class="custom-toggle-switch-base"
-                                data-ng-class="config.includeAll ? 'custom-toggle-active': 'custom-toggle-inactive'">
-                                <input id="IncludeAll" type="checkbox" name="includeAll" type="checkbox"
-                                    class="custom-toggle-input" data-ng-model="config.includeAll">
-                                <span class="custom-toggle-handle"></span>
-                                <span class="custom-toggle-root"></span>
-                            </span>
-                            <span class="custom-toggle-track"></span>
-                        </span>
+                        <label class="switch switch-pill switch-label switch-success padding-top-md">
+                            <input type="checkbox" class="switch-input" name="IncludeAll"
+                                id="IncludeAll" data-ng-model="config.includeAll"
+                                data-ng-change="$ctrl.changeActiveStatus()">
+                            <span class="switch-slider" data-checked="Yes"
+                                data-unchecked="No"></span>
+                        </label>
                     </span>
                 </div>
+                <hr data-ng-if="!config.includeAll" class="visibility-hidden">
+
                 <div data-ng-if="config.includeAll">
                     <hr class="visibility-hidden">
 
@@ -190,8 +192,7 @@
                         <ui-select name="excludeFieldsArray" data-ng-model="config.excludeFieldsArray" multiple
                             class="custom-multi-select" tagging="undefined" tagging-label="false">
                             <ui-select-match placeholder="Fields To Exclude">{{$item.title}}</ui-select-match>
-                            <ui-select-choices repeat="option in fieldsArray | filter: $select.search" refresh-delay="0"
-                                ng-show="($select.items.length >= 0) || ">
+                            <ui-select-choices repeat="option in fieldsArray | filter: fieldNotExists | filter: alreadyExcludedFields | filter: $select.search | orderBy: 'title'" refresh-delay="0" ng-show="($select.items.length >= 0)">
                                 <div ng-bind="option.title"></div>
                             </ui-select-choices>
                         </ui-select>

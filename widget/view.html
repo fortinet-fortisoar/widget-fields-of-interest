@@ -17,7 +17,7 @@
             <div class="row section-widget edit-form-widget">
                 <cs-spinner data-ng-hide="initialized" data-show-background="true"></cs-spinner>
                 <div data-ng-if="config.hideEmptyFieldsCheckbox" class="display-block margin-left-md padding-top-md padding-left-sm">
-                    <div class="checkbox margin-top-0">
+                    <div class="checkbox margin-top-0" style="margin-bottom: 5px;">
                         <label for="hideEmptyFields">
                             <input class="margin-top-0 "  type="checkbox" id="hideEmptyFields" data-ng-model="config.hideEmptyFields" data-ng-change="init()"/>
                             <span class="control-label" style="margin-top: -3px;"> Hide Empty Fields </span>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="row" data-ng-repeat="row in rows" data-ng-show="initialized" data-ng-class="{'no-widget-title': !config.title && $first}">
                   <div data-ng-repeat="column in ::row.columns" data-ng-class="::column.style" class="{{row.style}}">
-                    <p class="control-label text-underline padding-top-md" style="font-size: 12px !important; margin-bottom: 0px !important;">{{column.columnTitle}}</p>
+                    <h6 class="text-underline" style="margin: 0.5em 0 0.5em;">{{column.columnTitle}}</h6>
                     <div data-ng-repeat="field in ::column.fields">
                       <div data-cs-editable-field data-field="field.fieldData" data-mode="row.mode" data-field-options="field.options" submit="submitField" data-change-method="notifyFieldChange" data-disabled="!field.fieldData.editable"></div>
                     </div>

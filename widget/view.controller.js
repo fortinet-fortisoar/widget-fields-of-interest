@@ -2,11 +2,11 @@
 (function () {
     angular
         .module('cybersponse')
-        .controller('fieldsOfInterest101Ctrl', fieldsOfInterest101Ctrl);
+        .controller('fieldsOfInterest102Ctrl', fieldsOfInterest102Ctrl);
 
-    fieldsOfInterest101Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', 'Modules', 'viewTemplate', '$rootScope', '$timeout'];
+    fieldsOfInterest102Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', 'Modules', 'viewTemplate', '$rootScope', '$timeout'];
 
-    function fieldsOfInterest101Ctrl($scope, $state, Entity, FormEntityService, Modules, viewTemplate, $rootScope, $timeout) {
+    function fieldsOfInterest102Ctrl($scope, $state, Entity, FormEntityService, Modules, viewTemplate, $rootScope, $timeout) {
         $scope.id = $state.params.id;
         $scope.module = $state.params.module;
         $scope.updateFieldValues = updateFieldValues;
@@ -60,7 +60,7 @@
             })
             for (const key in $scope.entity.fields) {
                 if (!selectedFields.includes(key) && !excludeArray.includes(key) && $scope.entity.fields[key].type !== 'manyToMany'
-                   && $scope.entity.fields[key].type !== 'oneToMany') {
+                   && $scope.entity.fields[key].type !== 'oneToMany' && $scope.entity.fields[key].type && $scope.entity.fields[key].type !== null) {
                     missingFields.push({
                         name: key,
                         readOnly: true
