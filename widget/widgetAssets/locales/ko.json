@@ -1,0 +1,36 @@
+{
+    "fsmAlertDetials": {
+        "HIDE_EMPTY_FIELDS": "비어 있는 필드 숨기기",
+        
+        "ADD_SECTION": "섹션 추가",
+        "ALL_INLINE": "모두 인라인 표시",
+        "ALL_INLINE_TOOLTIP": "체크하지 않으면 모든 필드가 클릭 편집 대신 편집 버튼으로 표시됩니다.",
+        "ALL_READ_ONLY": "모두 읽기 전용",
+        "CLOSE_BTN": "닫기",
+        "CUSTOM_HTML": "사용자 정의 HTML",
+        "CUSTOM_VIEW": "사용자 정의 보기",
+        "CUSTOM_WIDGET": "사용자 정의 위젯",
+        "EDIT_TITLE": "제목 (비워두면 제목 없음)",
+        "EXCLUDE_FIELDS": "다음 필드 제외",
+        "HTML": "HTML",
+        "HTML_PLACEHOLDER": "HTML 추가",
+        "INLINE_EDITOR": "인라인 편집기",
+        "INLINE_EDITOR_TOOLTIP": "체크하지 않으면 필드가 클릭 편집 대신 편집 버튼으로 표시됩니다.",
+        "IS_JSON": "JSON 콘텐츠 여부",
+        "READ_ONLY": "읽기 전용",
+        "READ_ONLY_TOOLTIP": "체크하면 권한과 관계없이 모든 필드가 읽기 전용으로 표시됩니다.",
+        "SAVE_BTN": "저장",
+        "SELECT_A_WIDGET": "위젯 선택",
+        "SELECT_WIDGET": "위젯 선택",
+        "SHOW_ALL_FIELDS": "나머지 모든 필드 표시",
+        "SHOW_FIELDS": "필드 표시 체크박스 표시",
+        "SHOW_FIELDS_TOOLTIP": "모듈의 상세 보기에서 '비어 있는 필드 숨기기' 체크박스를 표시합니다.",
+        "TITLE": "제목",
+        "TITLE_TOOLTIP": "속성의 제목을 입력하세요",
+        "TOOLTIP": "툴팁",
+        "TOOLTIP_TOOLTIP": "속성의 툴팁을 입력하세요",
+        "WIDGET_EDIT_TITLE": "관심 필드 편집",
+        "WIDGET_HEIGHT": "위젯 높이",
+        "WIDGET_HEIGHT_TOOLTIP": "JSON 편집기 높이 설정(px). 최소 250px, 최대 800px."
+    }
+}

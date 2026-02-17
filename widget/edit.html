@@ -1,7 +1,12 @@
+<!-- Copyright start
+    MIT License
+    Copyright (c) 2026 Fortinet Inc
+Copyright end -->
+
 <form data-ng-submit="save()" class="noMargin" name="editFieldsOfInterestForm"
     data-ng-class="{'state-wait': processing }" novalidate>
     <div class="modal-header">
-        <h3 class="modal-title col-md-9">Edit Fields of Interest</h3>
+        <h3 class="modal-title col-md-9">{{viewWidgetVars.WIDGET_EDIT_TITLE}}</h3>
         <button type="button" class="close" data-ng-click="cancel()" data-dismiss="modal" aria-label="Close"
             id="close-edit-widget-form-btn">
             <div aria-hidden="true" class="version-button">+</div>
@@ -10,7 +15,7 @@
     <div class="modal-body">
         <div>
             <div class="form-group">
-                <label class="control-label" for="formGroupTitle">Title (leave blank for no title)</label>
+                <label class="control-label" for="formGroupTitle">{{viewWidgetVars.EDIT_TITLE}}</label>
                 <input class="form-control" type="text" id="formGroupTitle" data-ng-model="config.title" />
             </div>
             <div class="form-group">
@@ -22,7 +27,7 @@
                 <div class="row margin-bottom-md">
                     <div class="col-md-4">
                         <select id="fieldSelect" class="form-control" data-ng-model="newField"
-                            data-ng-options="field.name as field.title for field in fieldsArray | filter: fieldNotExists | orderBy: 'title'">
+                            data-ng-options="field.name as field.title for field in fieldsArray | orderBy: 'title'">
                             <option value="">Select a field</option>
                         </select>
                     </div>
@@ -38,39 +43,42 @@
                         <span class="widget-icon columns column-6" data-ng-click="changeStructure(2)"></span>
                         <span class="widget-icon columns column-3" data-ng-click="changeStructure(3)"></span>
                         <div class="pull-right" data-ng-show="widget.name === 'fieldsOfInterest'">
-                            <div class="pull-right margin-right-md" data-ng-show="widget.name === 'fieldsOfInterest'">
+                            <div class="pull-right margin-right-md"
+                                data-ng-show="widget.name === 'fieldsOfInterest'">
                                 <div class="checkbox margin-top-0">
                                     <label for="allReadOnly">
                                         <input type="checkbox" id="allReadOnly" data-ng-model="config.allReadOnly"
-                                            data-ng-change="applyDefaults('readOnly', config.allReadOnly)" />All Read-Only
+                                            data-ng-change="applyDefaults('readOnly', config.allReadOnly)" />{{viewWidgetVars.ALL_READ_ONLY}}
                                         <span
-                                            data-uib-tooltip="If checked, all fields will display as read-only regardless of permissions."
+                                            data-uib-tooltip="{{viewWidgetVars.READ_ONLY_TOOLTIP}}"
                                             data-tooltip-append-to-body="true"><i
                                                 class="icon icon-information font-Size-13"></i></span>
                                     </label>
                                 </div>
                             </div>
-                            <div class="pull-right margin-right-md" data-ng-show="widget.name === 'fieldsOfInterest'">
+                            <div class="pull-right margin-right-md"
+                                data-ng-show="widget.name === 'fieldsOfInterest'">
                                 <div class="checkbox margin-top-0">
                                     <label for="allHighlightMode">
-                                        <input type="checkbox" id="allHighlightMode" data-ng-model="config.allHighlightMode"
-                                            data-ng-change="applyDefaults('highlightMode', config.allHighlightMode)" />All
-                                        Inline
+                                        <input type="checkbox" id="allHighlightMode"
+                                            data-ng-model="config.allHighlightMode"
+                                            data-ng-change="applyDefaults('highlightMode', config.allHighlightMode)" />{{viewWidgetVars.ALL_INLINE}}
                                         <span
-                                            data-uib-tooltip="If not checked, all fields will display an edit button instead of being click-to-edit."
+                                            data-uib-tooltip="{{viewWidgetVars.ALL_INLINE_TOOLTIP}}"
                                             data-tooltip-append-to-body="true"><i
                                                 class="icon icon-information font-Size-13"></i></span>
                                     </label>
                                 </div>
                             </div>
-                            <!-- / -->
-                            <div class="pull-right margin-right-md" data-ng-show="widget.name === 'fieldsOfInterest'">
+
+                            <div class="pull-right margin-right-md"
+                                data-ng-show="widget.name === 'fieldsOfInterest'">
                                 <div class="checkbox margin-top-0">
                                     <label for="hideEmptyFields">
-                                        <input type="checkbox" id="hideEmptyFields" data-ng-model="config.hideEmptyFieldsCheckbox"
-                                             />Show Field Visibility Checkbox
+                                        <input type="checkbox" id="hideEmptyFields"
+                                            data-ng-model="config.hideEmptyFieldsCheckbox" />{{viewWidgetVars.SHOW_FIELDS}}
                                         <span
-                                            data-uib-tooltip="To show the 'Hide Empty Fields' Checkbox in detailed view of the module"
+                                            data-uib-tooltip="{{viewWidgetVars.SHOW_FIELDS_TOOLTIP}}"
                                             data-tooltip-append-to-body="true"><i
                                                 class="icon icon-information font-Size-13"></i></span>
                                     </label>
@@ -83,97 +91,249 @@
                 <div class="row margin-top-lg display-block" data-ng-model="config.rows[0].columns">
                     <div id="template-column-{{$index}}" data-column="{{$index}}"
                         data-ng-repeat="column in config.rows[0].columns" data-ng-class="column.style">
-                        <div class="padding-bottom-sm">
-                            <input class="form-control" type="text" id="formGroupTitle" placeholder="Column Title"
-                                data-ng-model="column.columnTitle" />
+                        <div data-ng-repeat="section in column.sections">
+                            <div class="padding-bottom-sm display-flex align-items-center">
+                                <input class="form-control" type="text" id="formGroupTitle" placeholder="Column Title"
+                                    data-ng-model="section.sectionTitle" />
+                                <a type="button" class="btn btn-sm btn-default margin-right-sm height-32"
+                                    data-ng-click="removeSection($index, column)">
+                                    <span class="icon icon-close text-danger"></span>
+                                </a>
+                            </div>
+                            <ul id="template-section-fields-{{$index}}" data-as-sortable data-ng-model="section.fields"
+                                class="widgets-container">
+                                <li id="template-section-field-{{$index}}" data-ng-repeat="field in section.fields"
+                                    data-as-sortable-item>
+                                    <div data-as-sortable-item-handle>
+                                        <div
+                                            class="panel-heading panel-default padding-right-0 widget-panel small text-capitalize">
+                                            <div class="text-overflow" style="margin-right: 70px;">
+                                                <span title="{{fields[field.name].title}} ({{field.title}})">
+                                                    <i class="icon icon-more padding-right-md"></i>{{
+                                                    fields[field.name].title }} <span
+                                                        data-ng-if="field.title">({{field.title}})</span>
+                                                </span>
+                                            </div>
+
+                                            <div class="remove-widget-container fields-list">
+                                                <a type="button"
+                                                    class="btn btn-sm btn-default pull-right margin-right-sm"
+                                                    data-ng-click="removeField($index, section)">
+                                                    <span class="icon icon-close text-danger"></span>
+                                                </a>
+                                                <a type="button"
+                                                    class="btn btn-sm btn-default pull-right margin-right-sm"
+                                                    data-ng-click="$parent.expanded = !$parent.expanded"
+                                                    data-ng-show=" fields[field.name].type === 'textarea' || fields[field.name].type === 'object' || widget.name === 'fieldsOfInterest' && fields[field.name].editable">
+                                                    <span class="fa"
+                                                        data-ng-class="{'fa-caret-up': $parent.expanded, 'fa-caret-down': !$parent.expanded}"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="sortable-dropdown"
+                                        data-ng-show="expanded && (fields[field.name].type === 'richtext' || fields[field.name].formType === 'textarea' || widget.name === 'fieldsOfInterest' && fields[field.name].editable)">
+                                        <div data-ng-show="field.customViewFormat !== 'custom-widget'">
+                                            <div class="checkbox margin-left-sm"
+                                                data-ng-show="(fields[field.name].type === 'object' || fields[field.name].type === 'textarea' || fields[field.name].type === 'text') && !field.overrideRenderer">
+                                                <label for="json-field-{{::field.name}}">
+                                                    <input id="json-field-{{::field.name}}" type="checkbox"
+                                                        data-ng-model="field.isJsonField"
+                                                        data-ng-change="updatetJsonField(field)">&nbsp;{{viewWidgetVars.IS_JSON}}
+                                                </label>
+                                            </div>
+                                            <div class="display-flex margin-left-sm margin-bottom-sm margin-right-sm"
+                                                style="flex-direction: column;" data-ng-show="field.isJsonField">
+                                                <div class="display-flex">
+                                                    <div
+                                                        class="pull-left expanded-lbl margin-right-md small margin-auto">
+                                                        Title
+                                                        <span data-uib-tooltip="Give the title for the property"
+                                                            data-tooltip-append-to-body="true"><i
+                                                                class="icon icon-information font-Size-13"></i></span>
+                                                    </div>
+                                                    <input
+                                                        class="pull-left padding-right-sm form-control form-control-sm widget-height-input width-100pt"
+                                                        type="text" id="property-title-{{::field.name}}"
+                                                        data-ng-model="field.title" data-cs-focus />
+                                                </div>
+                                                <div class="margin-top-sm display-flex">
+                                                    <div
+                                                        class="pull-left expanded-lbl margin-right-md small margin-auto">
+                                                        Tooltip
+                                                        <span data-uib-tooltip="Give the tooltip for the property"
+                                                            data-tooltip-append-to-body="true"><i
+                                                                class="icon icon-information font-Size-13"></i></span>
+                                                    </div>
+                                                    <input
+                                                        class="pull-left padding-right-sm form-control form-control-sm widget-height-input"
+                                                        type="text" id="property-tooltip-{{::field.name}}"
+                                                        data-ng-model="field.tooltip" data-cs-focus />
+                                                </div>
+                                                <div class="margin-top-sm display-flex">
+                                                    <div
+                                                        class="pull-left expanded-lbl margin-right-md small margin-auto">
+                                                        Property Path
+                                                        <span
+                                                            data-uib-tooltip="Give the property name to be displayed. eg name or data.name"
+                                                            data-tooltip-append-to-body="true"><i
+                                                                class="icon icon-information font-Size-13"></i></span>
+                                                    </div>
+                                                    <textarea autoheight cols="30"
+                                                        class="pull-left padding-right-sm form-control form-control-sm widget-height-input width-100pt"
+                                                        id="property-path-{{::field.name}}" autocomplete="off"
+                                                        data-ng-model="field.propertyPath" placeholder="eg. this.name"
+                                                        data-cs-focus></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div data-ng-hide="field.isJsonField" class="margin-left-sm">
+                                                <div class="row padding-bottom-sm"
+                                                    data-ng-show="(fields[field.name].type === 'object' || fields[field.name].type === 'textarea' )">
+                                                    <div class="col-sm-3">
+                                                        <div class="pull-left expanded-lbl margin-right-md small">{{viewWidgetVars.WIDGET_HEIGHT}}
+                                                            <span
+                                                                data-uib-tooltip="{{viewWidgetVars.WIDGET_HEIGHT_TOOLTIP}}"
+                                                                data-tooltip-append-to-body="true"><i
+                                                                    class="icon icon-information font-Size-13"></i></span>
+                                                        </div>
+                                                        <input
+                                                            class="pull-left padding-right-sm form-control form-control-sm widget-height-input"
+                                                            type="number" id="widegetheight"
+                                                            data-ng-model="field.renderWidgetHeight" min="250" max="800"
+                                                            style="position: absolute;" data-cs-focus />
+                                                    </div>
+                                                </div>
+                                                <div class="row padding-bottom-sm"
+                                                    data-ng-show="widget.name === 'fieldsOfInterest' && fields[field.name].editable">
+                                                    <div class="col-sm-12">
+                                                        <div class="pull-left expanded-lbl margin-right-md small">
+                                                            {{viewWidgetVars.READ_ONLY}}
+                                                            <span
+                                                                data-uib-tooltip="If checked, the field will display as read-only regardless of permissions."
+                                                                data-tooltip-append-to-body="true"><i
+                                                                    class="icon icon-information font-Size-13"></i></span>
+                                                        </div>
+                                                        <input type="checkbox" id="read-only-checkbox-edit-form-group"
+                                                            class="margin-top-sm" data-ng-model="field.readOnly"
+                                                            data-ng-change="$parent.$parent.$parent.config.allReadOnly = !field.readOnly ? false : $parent.$parent.$parent.config.allReadOnly" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row padding-bottom-sm margin-left-sm"
+                                                data-ng-show="widget.name === 'fieldsOfInterest' && alwaysUseEdit.indexOf(fields[field.name].type) === -1 && !field.readOnly">
+                                                <div class="col-sm-12">
+                                                    <div class="pull-left expanded-lbl margin-right-md small">{{viewWidgetVars.INLINE_EDITOR}}
+                                                        <span
+                                                            data-uib-tooltip="{{viewWidgetVars.INLINE_EDITOR_TOOLTIP}}"
+                                                            data-tooltip-append-to-body="true"><i
+                                                                class="icon icon-information font-Size-13"></i></span>
+                                                    </div>
+                                                    <input type="checkbox" id="highlightMode" class="margin-top-sm"
+                                                        data-ng-model="field.highlightMode"
+                                                        data-ng-change="$parent.$parent.$parent.config.allHighlightMode = !field.highlightMode ? false : $parent.$parent.$parent.config.allHighlightMode" />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="checkbox margin-left-sm">
+                                                    <label for="custom-view-field-{{::field.name}}">
+                                                        <input id="custom-view-field-{{::field.name}}" type="checkbox"
+                                                            data-ng-model="field.isCustomView"
+                                                            data-ng-change="field.customViewFormat = undefined">&nbsp;{{viewWidgetVars.CUSTOM_VIEW}}
+                                                    </label>
+                                                </div>
+                                                <div data-ng-show="field.isCustomView" class="margin-left-sm">
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input id="custom-widget-{{::field.name}}" type="radio"
+                                                                name="custom-view"
+                                                                data-ng-model="field.customViewFormat"
+                                                                value="custom-widget">&nbsp;&nbsp;{{viewWidgetVars.CUSTOM_WIDGET}}
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input id="custom-html-{{::field.name}}" type="radio"
+                                                                name="custom-view"
+                                                                data-ng-model="field.customViewFormat" data-ng-change="field.overrideRenderer = field.customViewFormat === 'custom-html'"
+                                                                value="custom-html">&nbsp;&nbsp;{{viewWidgetVars.CUSTOM_HTML}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="display-flex margin-left-sm margin-bottom-sm margin-right-sm"
+                                                    style="flex-direction: column;"
+                                                    data-ng-show="field.customViewFormat === 'custom-widget'">
+                                                    <div class="display-flex">
+                                                        <div
+                                                            class="pull-left expanded-lbl margin-right-md small margin-auto">
+                                                            {{viewWidgetVars.TITLE}}
+                                                            <span data-uib-tooltip="{{viewWidgetVars.TITLE_TOOLTIP}}"
+                                                                data-tooltip-append-to-body="true"><i
+                                                                    class="icon icon-information font-Size-13"></i></span>
+                                                        </div>
+                                                        <input
+                                                            class="pull-left padding-right-sm form-control form-control-sm widget-height-input width-100pt"
+                                                            type="text" id="property-title-{{::field.name}}"
+                                                            data-ng-model="field.title" data-cs-focus />
+                                                    </div>
+                                                    <div class="display-flex">
+                                                        <div
+                                                            class="pull-left expanded-lbl margin-right-md small margin-auto">
+                                                            {{viewWidgetVars.TOOLTIP}}
+                                                            <span data-uib-tooltip="{{viewWidgetVars.TOOLTIP_TOOLTIP}}"
+                                                                data-tooltip-append-to-body="true"><i
+                                                                    class="icon icon-information font-Size-13"></i></span>
+                                                        </div>
+                                                        <input
+                                                            class="pull-left padding-right-sm form-control form-control-sm widget-height-input width-100pt"
+                                                            type="text" id="property-tooltip-{{::field.name}}"
+                                                            data-ng-model="field.tooltip" data-cs-focus />
+                                                    </div>
+                                                    <div class="display-flex">
+                                                        <div
+                                                            class="pull-left expanded-lbl margin-right-md small margin-auto">
+                                                            {{viewWidgetVars.SELECT_WIDGET}}
+                                                        </div>
+                                                        <select id="custom-widget-select-{{::field.name}}"
+                                                            class="form-control" data-ng-model="field.customWidgetType"
+                                                            data-ng-options="widget.name as widget.title for widget in widgets | orderBy: 'title'">
+                                                            <option value="">{{viewWidgetVars.SELECT_A_WIDGET}}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="display-flex margin-left-sm margin-bottom-sm margin-right-sm"
+                                                    style="flex-direction: column;"
+                                                    data-ng-show="field.customViewFormat === 'custom-html'">
+                                                    <div class="display-flex">
+                                                        <div
+                                                            class="pull-left expanded-lbl margin-right-md small margin-auto">
+                                                            {{viewWidgetVars.HTML}}
+                                                        </div>
+                                                        <textarea autoheight data-ng-model="field.rendererHtml"
+                                                            cols="30"
+                                                            class="pull-left padding-right-sm form-control form-control-sm widget-height-input width-100pt input-sm"
+                                                            autocomplete="off" placeholder="{{viewWidgetVars.HTML_PLACEHOLDER}}"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </li>
+                            </ul>
                         </div>
-                        <ul id="template-column-fields-{{$index}}" data-as-sortable data-ng-model="column.fields"
-                            class="widgets-container">
-                            <li id="template-column-field-{{$index}}" data-ng-repeat="field in column.fields"
-                                data-as-sortable-item>
-                                <div data-as-sortable-item-handle>
-                                    <div
-                                        class="panel-heading panel-default padding-right-0 widget-panel small text-capitalize">
-                                        <span>
-                                            <i class="icon icon-more padding-right-md"></i>{{ fields[field.name].title }}
-                                        </span>
-                                        <div class="remove-widget-container fields-list">
-                                            <a type="button" class="btn btn-sm btn-default pull-right margin-right-sm"
-                                                data-ng-click="removeField($index, column)">
-                                                <span class="icon icon-close text-danger"></span>
-                                            </a>
-                                            <a type="button" class="btn btn-sm btn-default pull-right margin-right-sm"
-                                                data-ng-click="$parent.expanded = !$parent.expanded"
-                                                data-ng-show=" fields[field.name].type === 'textarea' || fields[field.name].type === 'object' || widget.name === 'fieldsOfInterest' && fields[field.name].editable">
-                                                <span class="fa"
-                                                    data-ng-class="{'fa-caret-up': $parent.expanded, 'fa-caret-down': !$parent.expanded}"></span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sortable-dropdown"
-                                    data-ng-show="expanded && (fields[field.name].type === 'richtext' || fields[field.name].formType === 'textarea' || widget.name === 'fieldsOfInterest' && fields[field.name].editable)">
-                                    <div class="row padding-bottom-sm"
-                                        data-ng-show="(fields[field.name].type === 'object' || fields[field.name].type === 'textarea' )">
-                                        <div class="col-sm-3">
-                                            <div class="pull-left expanded-lbl margin-right-md small">Widget Height
-                                                <span
-                                                    data-uib-tooltip="Set JSON Editor Height (In px).Minimum value is 250px and Max value is 800px"
-                                                    data-tooltip-append-to-body="true"><i
-                                                        class="icon icon-information font-Size-13"></i></span>
-                                            </div>
-                                            <input
-                                                class="pull-left padding-right-sm form-control form-control-sm widget-height-input"
-                                                type="number" id="widegetheight"
-                                                data-ng-model="field.renderWidgetHeight" min="250" max="800"
-                                                style="position: absolute;" data-cs-focus />
-                                        </div>
-                                    </div>
-                                    <div class="row padding-bottom-sm"
-                                        data-ng-show="widget.name === 'fieldsOfInterest' && fields[field.name].editable">
-                                        <div class="col-sm-12">
-                                            <div class="pull-left expanded-lbl margin-right-md small">Read-Only
-                                                <span
-                                                    data-uib-tooltip="If checked, the field will display as read-only regardless of permissions."
-                                                    data-tooltip-append-to-body="true"><i
-                                                        class="icon icon-information font-Size-13"></i></span>
-                                            </div>
-                                            <input type="checkbox" id="read-only-checkbox-edit-form-group"
-                                                class="margin-top-sm" data-ng-model="field.readOnly"
-                                                data-ng-change="$parent.$parent.$parent.config.allReadOnly = !field.readOnly ? false : $parent.$parent.$parent.config.allReadOnly" />
-                                        </div>
-                                    </div>
-                                    <div class="row padding-bottom-sm"
-                                        data-ng-show="widget.name === 'fieldsOfInterest' && alwaysUseEdit.indexOf(fields[field.name].type) === -1 && !field.readOnly">
-                                        <div class="col-sm-12">
-                                            <div class="pull-left expanded-lbl margin-right-md small">Inline Editor
-                                                <span
-                                                    data-uib-tooltip="If not checked, the field will display an edit button instead of being click-to-edit."
-                                                    data-tooltip-append-to-body="true"><i
-                                                        class="icon icon-information font-Size-13"></i></span>
-                                            </div>
-                                            <input type="checkbox" id="highlightMode" class="margin-top-sm"
-                                                data-ng-model="field.highlightMode"
-                                                data-ng-change="$parent.$parent.$parent.config.allHighlightMode = !field.highlightMode ? false : $parent.$parent.$parent.config.allHighlightMode" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <a class="pull-left font-10px margin-right-lg btn-link btn" name="addSectionButton"
+                            data-ng-click="addSection(column)"><i class="icon icon-add"></i>&nbsp;{{viewWidgetVars.ADD_SECTION}}</a>
                     </div>
                 </div>
                 <div id="showAllRemainingFields">
                     <span class="custom-toggle-btn pull-left display-block">
-                        <span class="custom-toggle-btn-status margin-top-md font-size-12 text-left">Show All Remaining Fields</span>
-                        <span
-                            data-uib-tooltip="Adds a column named 'Others' that includes all the remaining fields"
+                        <span class="custom-toggle-btn-status margin-top-md font-size-12 text-left">{{viewWidgetVars.SHOW_ALL_FIELDS}}</span>
+                        <span data-uib-tooltip="Adds a column named 'Others' that includes all the remaining fields"
                             data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
                         <label class="switch switch-pill switch-label switch-success padding-top-md">
-                            <input type="checkbox" class="switch-input" name="IncludeAll"
-                                id="IncludeAll" data-ng-model="config.includeAll"
-                                data-ng-change="$ctrl.changeActiveStatus()">
-                            <span class="switch-slider" data-checked="Yes"
-                                data-unchecked="No"></span>
+                            <input type="checkbox" class="switch-input" name="IncludeAll" id="IncludeAll"
+                                data-ng-model="config.includeAll" data-ng-change="$ctrl.changeActiveStatus()">
+                            <span class="switch-slider" data-checked="Yes" data-unchecked="No"></span>
                         </label>
                     </span>
                 </div>
@@ -183,16 +343,17 @@
                     <hr class="visibility-hidden">
 
                     <div>
-                        <span class="custom-toggle-btn-status margin-top-md font-size-12 text-left">Exclude Following Fields</span>
-                        <span
-                        data-uib-tooltip="Select fields to exclude from the 'Others' column"
-                        data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
+                        <span class="custom-toggle-btn-status margin-top-md font-size-12 text-left">{{viewWidgetVars.EXCLUDE_FIELDS}}</span>
+                        <span data-uib-tooltip="Select fields to exclude from the 'Others' column"
+                            data-tooltip-append-to-body="true"><i class="icon icon-information font-size-12"></i></span>
                     </div>
                     <div class="cs-select">
                         <ui-select name="excludeFieldsArray" data-ng-model="config.excludeFieldsArray" multiple
                             class="custom-multi-select" tagging="undefined" tagging-label="false">
                             <ui-select-match placeholder="Fields To Exclude">{{$item.title}}</ui-select-match>
-                            <ui-select-choices repeat="option in fieldsArray | filter: fieldNotExists | filter: alreadyExcludedFields | filter: $select.search | orderBy: 'title'" refresh-delay="0" ng-show="($select.items.length >= 0)">
+                            <ui-select-choices
+                                repeat="option in fieldsArray | filter: fieldNotExists | filter: alreadyExcludedFields | filter: $select.search | orderBy: 'title'"
+                                refresh-delay="0" ng-show="($select.items.length >= 0)">
                                 <div ng-bind="option.title"></div>
                             </ui-select-choices>
                         </ui-select>
@@ -209,8 +370,8 @@
     </div>
     <div class="modal-footer">
         <button id="edit-widget-save" type="submit" class="btn btn-sm btn-primary"><i
-                class="icon icon-check margin-right-sm"></i>Save</button>
+                class="icon icon-check margin-right-sm"></i>{{viewWidgetVars.SAVE_BTN}}</button>
         <button id="edit-widget-cancel" type="button" class="btn btn-sm btn-default" data-ng-click="cancel()"><i
-                class="icon icon-close margin-right-sm"></i>Close</button>
+                class="icon icon-close margin-right-sm"></i>{{viewWidgetVars.CLOSE_BTN}}</button>
     </div>
 </form>

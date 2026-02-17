@@ -1,0 +1,36 @@
+{
+    "fsmAlertDetials": {
+        "HIDE_EMPTY_FIELDS": "Hide Empty Fields",
+
+        "ADD_SECTION": "Add Section",
+        "ALL_INLINE": "All Inline",
+        "ALL_INLINE_TOOLTIP": "If not checked, all fields will display an edit button instead of being click-to-edit.",
+        "ALL_READ_ONLY": "All Read-Only",
+        "CLOSE_BTN": "Close",
+        "CUSTOM_HTML": "Custom HTML",
+        "CUSTOM_VIEW": "Custom View",
+        "CUSTOM_WIDGET": "Custom Widget",
+        "EDIT_TITLE": "Title (leave blank for no title)",
+        "EXCLUDE_FIELDS": "Exclude Following Fields",
+        "HTML": "HTML",
+        "HTML_PLACEHOLDER": "Add HTML",
+        "INLINE_EDITOR": "Inline Editor",
+        "INLINE_EDITOR_TOOLTIP": "If not checked, the field will display an edit button instead of being click-to-edit.",
+        "IS_JSON": "Is Json Content",
+        "READ_ONLY": "All Read-Only",
+        "READ_ONLY_TOOLTIP": "If checked, all fields will display as read-only regardless of permissions.",
+        "SAVE_BTN": "Save",
+        "SELECT_A_WIDGET": "Select a widget",
+        "SELECT_WIDGET": "Select Widget",
+        "SHOW_ALL_FIELDS": "Show All Remaining Fields",
+        "SHOW_FIELDS": "Show Field Visibility Checkbox",
+        "SHOW_FIELDS_TOOLTIP": "To show the 'Hide Empty Fields' Checkbox in detailed view of the module",
+        "TITLE": "Title",
+        "TITLE_TOOLTIP": "Give the title for the property",
+        "TOOLTIP": "Tooltip",
+        "TOOLTIP_TOOLTIP": "Give the tooltip for the property",
+        "WIDGET_EDIT_TITLE": "Edit Fields of Interest",
+        "WIDGET_HEIGHT": "Widget Height",
+        "WIDGET_HEIGHT_TOOLTIP": "Set JSON Editor Height (In px).Minimum value is 250px and Max value is 800px"
+    }
+}

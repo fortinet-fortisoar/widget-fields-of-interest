@@ -1,0 +1,36 @@
+{
+    "fsmAlertDetials": {
+        "HIDE_EMPTY_FIELDS": "空のフィールドを非表示",
+        
+        "ADD_SECTION": "セクションを追加",
+        "ALL_INLINE": "すべてインライン表示",
+        "ALL_INLINE_TOOLTIP": "チェックしない場合、すべてのフィールドはクリック編集の代わりに編集ボタンが表示されます。",
+        "ALL_READ_ONLY": "すべて読み取り専用",
+        "CLOSE_BTN": "閉じる",
+        "CUSTOM_HTML": "カスタムHTML",
+        "CUSTOM_VIEW": "カスタムビュー",
+        "CUSTOM_WIDGET": "カスタムウィジェット",
+        "EDIT_TITLE": "タイトル（空欄の場合はタイトルなし）",
+        "EXCLUDE_FIELDS": "以下のフィールドを除外",
+        "HTML": "HTML",
+        "HTML_PLACEHOLDER": "HTMLを追加",
+        "INLINE_EDITOR": "インラインエディター",
+        "INLINE_EDITOR_TOOLTIP": "チェックしない場合、フィールドはクリック編集の代わりに編集ボタンが表示されます。",
+        "IS_JSON": "JSONコンテンツ",
+        "READ_ONLY": "読み取り専用",
+        "READ_ONLY_TOOLTIP": "チェックすると、権限に関係なくすべてのフィールドが読み取り専用として表示されます。",
+        "SAVE_BTN": "保存",
+        "SELECT_A_WIDGET": "ウィジェットを選択",
+        "SELECT_WIDGET": "ウィジェットを選択",
+        "SHOW_ALL_FIELDS": "残りのすべてのフィールドを表示",
+        "SHOW_FIELDS": "フィールド表示チェックボックスを表示",
+        "SHOW_FIELDS_TOOLTIP": "モジュールの詳細ビューで「空のフィールドを非表示」チェックボックスを表示します。",
+        "TITLE": "タイトル",
+        "TITLE_TOOLTIP": "プロパティのタイトルを入力してください",
+        "TOOLTIP": "ツールチップ",
+        "TOOLTIP_TOOLTIP": "プロパティのツールチップを入力してください",
+        "WIDGET_EDIT_TITLE": "関心フィールドを編集",
+        "WIDGET_HEIGHT": "ウィジェットの高さ",
+        "WIDGET_HEIGHT_TOOLTIP": "JSONエディターの高さを設定（px単位）。最小値は250px、最大値は800pxです。"
+    }
+}

@@ -1,18 +1,26 @@
+
+/* Copyright start
+    MIT License
+    Copyright (c) 2026 Fortinet Inc
+Copyright end */
+
 'use strict';
 (function () {
     angular
         .module('cybersponse')
-        .controller('fieldsOfInterest102Ctrl', fieldsOfInterest102Ctrl);
+        .controller('fieldsOfInterest110Ctrl', fieldsOfInterest110Ctrl);
 
-    fieldsOfInterest102Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', 'Modules', 'viewTemplate', '$rootScope', '$timeout'];
+    fieldsOfInterest110Ctrl.$inject = ['$scope', 'widgetUtilityService', '$state', 'Entity', 'FormEntityService', '$interpolate', 'viewTemplate', '$rootScope', '$timeout', 'widgetBasePath'];
 
-    function fieldsOfInterest102Ctrl($scope, $state, Entity, FormEntityService, Modules, viewTemplate, $rootScope, $timeout) {
+    function fieldsOfInterest110Ctrl($scope, widgetUtilityService, $state, Entity, FormEntityService, $interpolate, viewTemplate, $rootScope, $timeout, widgetBasePath) {
         $scope.id = $state.params.id;
         $scope.module = $state.params.module;
         $scope.updateFieldValues = updateFieldValues;
         $scope.notifyFieldChange = notifyFieldChange;
         $scope.viewValueChange = viewValueChange;
+        $scope.widgetCSS = widgetBasePath + 'widgetAssets/css/cardView.css';
         $scope.submitField = FormEntityService.submitField;
+        $scope.widgets = viewTemplate.widgets;
         $scope.$on('template:refresh', function (event, changedFields) {
             angular.forEach(changedFields, function (field) {
                 $scope.notifyFieldChange(field.value, field);
@@ -25,7 +33,17 @@
             $scope.entity = FormEntityService.get();
         }
 
+        function _handleTranslations() {
+            widgetUtilityService.checkTranslationMode($scope.$parent.model.type).then(function () {
+                $scope.viewWidgetVars = {
+                // Create your translating static string variables here
+                HIDE_EMPTY_FIELDS: widgetUtilityService.translate('fieldsOfInterest.HIDE_EMPTY_FIELDS'),
+                };
+            });
+        }
+
         function init() {
+            _handleTranslations();
             if ($scope.entity) {
                 getFields();
                 $scope.initialized = true;
@@ -48,9 +66,12 @@
             var configRows = $scope.config.rows[0].columns;
             var selectedFields = [];
             configRows.forEach(function (column, index) {
-                column.fields.forEach(function (fields) {
-                    selectedFields.push(fields.name);
+                column.sections.forEach(function (section) {
+                    section.fields.forEach(function (field) {
+                    selectedFields.push(field.name);
                 })
+                })
+                
             })
 
             var missingFields = [];
@@ -95,11 +116,13 @@
             if ($scope.config.includeAll) {
                 // create an Others column for the remaining include all fields
                 if (!configRows[0].columns[configRows[0].columns.length - 1]['includeAll']) {
-                    configRows[0].columns.push({
+                    configRows[0].columns.push({sections:[
+                        { 
                         'fields': getMissingFields(),
                         'includeAll': true,
                         'columnTitle': 'Others'
-                    });
+                        }
+                    ]});
                 }
             }
             // On Config edit, if include_all is unchecked remove the column "Others"
@@ -112,13 +135,16 @@
                 var defaultColumnStyle = viewTemplate.getColumnStyle(row.columns.length);
                 row.columns.forEach(function (column) {
                     column.style = defaultColumnStyle;
-                    column.fields = $scope.updateFieldValues(column.fields);
+                    column.sections.forEach(function(section){
+                        section.fields = $scope.updateFieldValues(section.fields);
+                    })
+                    
                 });
             });
             $scope.rows = configRows;
             //to sort others column
             if($scope.config.includeAll){
-                sortByTitle($scope.rows[0].columns[$scope.rows[0].columns.length - 1].fields);
+                sortByTitle($scope.rows[0].columns[$scope.rows[0].columns.length - 1].sections[0].fields);
             }
         }
 
@@ -128,7 +154,18 @@
                 var fieldValue;
                 if (angular.isObject(field) && $scope.entity.fields.hasOwnProperty(field.name)) {
                     if ($scope.config.hideEmptyFields) {
-                        if ($scope.entity.fields[field.name].value === null || $scope.entity.fields[field.name].value === '' || $scope.entity.fields[field.name].value === undefined) {
+                         var value = $scope.entity.fields[field.name].value;
+                        if(field.isJsonField){
+                            if(!angular.isObject(value)){//convert to Object if not
+                                try {
+                                    value = JSON.parse(value);
+                                } catch (error) {
+                                    console.error('Value is not Json');
+                                }
+                            }
+                            value = $interpolate('{{'+field.propertyPath+'}}')(value);
+                        }
+                        if (value === null || value === 'null' || value === '' || value === undefined) {
                             return;
                         }
                     }
