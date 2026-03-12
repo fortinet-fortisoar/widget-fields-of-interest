@@ -12,7 +12,7 @@ Copyright end */
 
     editFieldsOfInterest110Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService', 'CommonUtils', 'viewTemplate'];
 
-    function editFieldsOfInterest110Ctrl($scope, $uibModalInstance, config, _, $state, Entity,  widget, ViewTemplateService, CommonUtils, viewTemplate) {
+    function editFieldsOfInterest110Ctrl($scope, $uibModalInstance, config, _, $state, Entity, widget, ViewTemplateService, CommonUtils, viewTemplate) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.widget = widget;
@@ -21,7 +21,7 @@ Copyright end */
         $scope.config.rows = $scope.config.rows || [{
             columns: [
                 {
-                    sections:[
+                    sections: [
                         {
                             fields: []
                         }
@@ -39,10 +39,10 @@ Copyright end */
         $scope.removeField = removeField;
         $scope.removeSection = removeSection;
         $scope.updatetJsonField = updatetJsonField;
-        if($scope.config.hideEmptyFields === undefined){
+        if ($scope.config.hideEmptyFields === undefined) {
             $scope.config.hideEmptyFields = true;
         }
-        
+
         $scope.config.includeAll = $scope.config.includeAll ? $scope.config.includeAll : false;
 
 
@@ -51,23 +51,26 @@ Copyright end */
         $scope.config.allReadOnly = true;
         $scope.config.allHighlightMode = true;
         checkReadOnlyAndAllHighlight();
-        loadAttributes();
-        $scope.widgets =  Object.values(viewTemplate.widgets);
+        $scope.widgets = Object.values(viewTemplate.widgets);
         $scope.fieldNotExists = fieldNotExists;
 
+        init();
+
+        function init() {
+        }
 
         function applyDefaults(attribute, value) {
-            angular.forEach($scope.config.rows, function(row) {
-              angular.forEach(row.columns, function(column) {
-                angular.forEach(row.sections,function(section){
-                    angular.forEach(section.fields, function(field) {
-                    if (attribute === 'highlightMode' && $scope.alwaysUseEdit.indexOf($scope.fields[field.name].type) > -1) {
-                        return;
-                    }
-                    field[attribute] = value;
+            angular.forEach($scope.config.rows, function (row) {
+                angular.forEach(row.columns, function (column) {
+                    angular.forEach(row.sections, function (section) {
+                        angular.forEach(section.fields, function (field) {
+                            if (attribute === 'highlightMode' && $scope.alwaysUseEdit.indexOf($scope.fields[field.name].type) > -1) {
+                                return;
+                            }
+                            field[attribute] = value;
+                        });
                     });
                 });
-              });
             });
         }
 
@@ -100,7 +103,7 @@ Copyright end */
             checkReadOnlyAndAllHighlight();
         }
 
-        function removeSection(index, column){
+        function removeSection(index, column) {
             column.sections.splice(index, 1);
         }
 
@@ -126,17 +129,17 @@ Copyright end */
             return fieldNames.indexOf(field.name) === -1;
         }
 
-        function updatetJsonField(field){
-            if(!field.isJsonField){
+        function updatetJsonField(field) {
+            if (!field.isJsonField) {
                 field.title = '';
                 field.propertyPath = '';
             }
-            if(field.isCustomView){
+            if (field.isCustomView) {
                 field.customViewFormat = 'custom-html';
-            }else{
+            } else {
                 field.customViewFormat = undefined;
             }
-            
+
         }
 
         function addField(newField) {
@@ -146,14 +149,14 @@ Copyright end */
                         name: newField,
                         renderWidget: 'json',
                         renderWidgetHeight: 250,
-                        readOnly:true,
+                        readOnly: true,
                         highlightMode: true
                     });
                     break;
                 } else {
                     $scope.config.rows[0].columns[0].sections[0].fields.push({
                         name: newField,
-                        readOnly:true,
+                        readOnly: true,
                         highlightMode: true
                     });
                     break;
@@ -162,8 +165,8 @@ Copyright end */
             checkReadOnlyAndAllHighlight();
         }
 
-        function addSection(column){
-            column.sections.push({fields: []});
+        function addSection(column) {
+            column.sections.push({ fields: [] });
         }
 
         function changeStructure(structure) {

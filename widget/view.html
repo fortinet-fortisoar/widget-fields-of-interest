@@ -3,18 +3,6 @@
     Copyright (c) 2026 Fortinet Inc
 Copyright end -->
 
-<style>
-    .label-width-30 {
-        .control-label {
-            width: 30% !important;
-        }
-
-        .view-content {
-            width: 100%;
-        }
-    }
-</style>
-
 <div class="widget widget-container ">
     <div class="display-flex-space-between margin-chart">
         <div class="padding-right-0 padding-left-0 widget-dashboard-title-width">
@@ -39,8 +27,8 @@ Copyright end -->
                         <label for="hideEmptyFields">
                             <input class="margin-top-0 " type="checkbox" id="hideEmptyFields"
                                 data-ng-model="config.hideEmptyFields" data-ng-change="init()" />
-                            <span class="control-label" style="margin-top: -3px;"> Hide Empty Fields </span>
-                            <span data-uib-tooltip="If checked all empty fields will be hidden."
+                            <span class="control-label" style="margin-top: -3px;">{{'fieldsOfInterest.HIDE_EMPTY_FIELDS' | translate}}</span>
+                            <span data-uib-tooltip="{{'fieldsOfInterest.HIDE_EMPTY_FIELDS_TOOLTIP' | translate}}"
                                 data-tooltip-append-to-body="true"><i
                                     class="icon icon-information font-Size-13"></i></span>
                         </label>

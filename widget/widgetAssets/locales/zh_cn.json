@@ -1,5 +1,37 @@
 {
     "fsmAlertDetials": {
-        "KEY_NAME": ""
+        "HIDE_EMPTY_FIELDS": "隐藏空字段",
+        "Hide_EMPTY_FIELDS_TOOLTIP": "如果选中，所有空字段将被隐藏。",
+        
+        "ADD_SECTION": "添加部分",
+        "ALL_INLINE": "全部内联显示",
+        "ALL_INLINE_TOOLTIP": "如果未选中，所有字段将显示编辑按钮，而不是点击直接编辑。",
+        "ALL_READ_ONLY": "全部只读",
+        "CLOSE_BTN": "关闭",
+        "CUSTOM_HTML": "自定义HTML",
+        "CUSTOM_VIEW": "自定义视图",
+        "CUSTOM_WIDGET": "自定义小部件",
+        "EDIT_TITLE": "标题（留空则无标题）",
+        "EXCLUDE_FIELDS": "排除以下字段",
+        "HTML": "HTML",
+        "HTML_PLACEHOLDER": "添加HTML",
+        "INLINE_EDITOR": "内联编辑器",
+        "INLINE_EDITOR_TOOLTIP": "如果未选中，字段将显示编辑按钮，而不是点击直接编辑。",
+        "IS_JSON": "是否为JSON内容",
+        "READ_ONLY": "只读",
+        "READ_ONLY_TOOLTIP": "如果选中，无论权限如何，所有字段都将以只读方式显示。",
+        "SAVE_BTN": "保存",
+        "SELECT_A_WIDGET": "选择一个小部件",
+        "SELECT_WIDGET": "选择小部件",
+        "SHOW_ALL_FIELDS": "显示所有剩余字段",
+        "SHOW_FIELDS": "显示字段可见性复选框",
+        "SHOW_FIELDS_TOOLTIP": "在模块的详细视图中显示“隐藏空字段”复选框。",
+        "TITLE": "标题",
+        "TITLE_TOOLTIP": "输入属性的标题",
+        "TOOLTIP": "提示",
+        "TOOLTIP_TOOLTIP": "输入属性的提示信息",
+        "WIDGET_EDIT_TITLE": "编辑关注字段",
+        "WIDGET_HEIGHT": "小部件高度",
+        "WIDGET_HEIGHT_TOOLTIP": "设置JSON编辑器高度（px）。最小250px，最大800px。"
     }
 }

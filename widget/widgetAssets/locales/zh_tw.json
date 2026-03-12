@@ -1,0 +1,37 @@
+{
+    "fsmAlertDetials": {
+        "HIDE_EMPTY_FIELDS": "隱藏空白欄位",
+        "Hide_EMPTY_FIELDS_TOOLTIP": "如果勾選，所有空欄位將被隱藏。",
+        
+        "ADD_SECTION": "新增區段",
+        "ALL_INLINE": "全部內嵌顯示",
+        "ALL_INLINE_TOOLTIP": "若未勾選，所有欄位將顯示編輯按鈕，而不是點擊即可編輯。",
+        "ALL_READ_ONLY": "全部唯讀",
+        "CLOSE_BTN": "關閉",
+        "CUSTOM_HTML": "自訂HTML",
+        "CUSTOM_VIEW": "自訂檢視",
+        "CUSTOM_WIDGET": "自訂小工具",
+        "EDIT_TITLE": "標題（留空則無標題）",
+        "EXCLUDE_FIELDS": "排除以下欄位",
+        "HTML": "HTML",
+        "HTML_PLACEHOLDER": "新增HTML",
+        "INLINE_EDITOR": "內嵌編輯器",
+        "INLINE_EDITOR_TOOLTIP": "若未勾選，欄位將顯示編輯按鈕，而不是點擊即可編輯。",
+        "IS_JSON": "是否為JSON內容",
+        "READ_ONLY": "唯讀",
+        "READ_ONLY_TOOLTIP": "若勾選，無論權限為何，所有欄位都將以唯讀方式顯示。",
+        "SAVE_BTN": "儲存",
+        "SELECT_A_WIDGET": "選擇一個小工具",
+        "SELECT_WIDGET": "選擇小工具",
+        "SHOW_ALL_FIELDS": "顯示所有剩餘欄位",
+        "SHOW_FIELDS": "顯示欄位可見性核取方塊",
+        "SHOW_FIELDS_TOOLTIP": "在模組的詳細檢視中顯示「隱藏空白欄位」核取方塊。",
+        "TITLE": "標題",
+        "TITLE_TOOLTIP": "輸入屬性的標題",
+        "TOOLTIP": "提示",
+        "TOOLTIP_TOOLTIP": "輸入屬性的提示資訊",
+        "WIDGET_EDIT_TITLE": "編輯關注欄位",
+        "WIDGET_HEIGHT": "小工具高度",
+        "WIDGET_HEIGHT_TOOLTIP": "設定JSON編輯器高度（px）。最小250px，最大800px。"
+    }
+}
