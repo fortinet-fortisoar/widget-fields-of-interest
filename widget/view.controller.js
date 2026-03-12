@@ -10,9 +10,9 @@ Copyright end */
         .module('cybersponse')
         .controller('fieldsOfInterest110Ctrl', fieldsOfInterest110Ctrl);
 
-    fieldsOfInterest110Ctrl.$inject = ['$scope', 'widgetUtilityService', '$state', 'Entity', 'FormEntityService', '$interpolate', 'viewTemplate', '$rootScope', '$timeout', 'widgetBasePath'];
+    fieldsOfInterest110Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', '$interpolate', 'viewTemplate', '$rootScope', '$timeout', 'widgetBasePath'];
 
-    function fieldsOfInterest110Ctrl($scope, widgetUtilityService, $state, Entity, FormEntityService, $interpolate, viewTemplate, $rootScope, $timeout, widgetBasePath) {
+    function fieldsOfInterest110Ctrl($scope, $state, Entity, FormEntityService, $interpolate, viewTemplate, $rootScope, $timeout, widgetBasePath) {
         $scope.id = $state.params.id;
         $scope.module = $state.params.module;
         $scope.updateFieldValues = updateFieldValues;
@@ -33,17 +33,7 @@ Copyright end */
             $scope.entity = FormEntityService.get();
         }
 
-        function _handleTranslations() {
-            widgetUtilityService.checkTranslationMode($scope.$parent.model.type).then(function () {
-                $scope.viewWidgetVars = {
-                // Create your translating static string variables here
-                HIDE_EMPTY_FIELDS: widgetUtilityService.translate('fieldsOfInterest.HIDE_EMPTY_FIELDS'),
-                };
-            });
-        }
-
         function init() {
-            _handleTranslations();
             if ($scope.entity) {
                 getFields();
                 $scope.initialized = true;
