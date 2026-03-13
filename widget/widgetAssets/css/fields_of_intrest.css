@@ -1,0 +1,12 @@
+/* Copyright start
+    MIT License
+    Copyright (c) 2026 Fortinet Inc
+Copyright end */
+
+.label-width-30 .control-label {
+    width: 30% !important;
+}
+
+.label-width-30 .view-content {
+    width: 100%;
+}
