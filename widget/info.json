@@ -2,7 +2,7 @@
     "name": "fieldsOfInterest",
     "title": "Fields Of Interest",
     "subTitle": "Select fields to display in the detailed view, regardless of the 'Visibility Constraint'",
-    "version": "1.0.2",
+    "version": "1.1.0",
     "published_date": 1679989083,    
     "releaseNotes": "available",
     "metadata": {
@@ -19,7 +19,7 @@
             "https://repo.fortisoar.fortinet.com/fsr-widgets/fieldsOfInterest-1.1.0/images/detailed-view.png"
             ],
         "compatibility": [
-            "7.6.3"
+            "8.0.0"
         ]
     }
 }
