@@ -1,5 +1,5 @@
 {
-    "fsmAlertDetials": {
+    "fieldsOfInterest": {
         "HIDE_EMPTY_FIELDS": "Hide Empty Fields",
         "HIDE_EMPTY_FIELDS_TOOLTIP": "If checked all empty fields will be hidden.",
 

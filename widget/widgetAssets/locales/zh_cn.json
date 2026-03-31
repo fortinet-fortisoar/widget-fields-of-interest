@@ -1,5 +1,5 @@
 {
-    "fsmAlertDetials": {
+    "fieldsOfInterest": {
         "HIDE_EMPTY_FIELDS": "隐藏空字段",
         "Hide_EMPTY_FIELDS_TOOLTIP": "如果选中，所有空字段将被隐藏。",
         

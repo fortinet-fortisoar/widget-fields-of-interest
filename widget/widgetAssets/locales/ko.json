@@ -1,5 +1,5 @@
 {
-    "fsmAlertDetials": {
+    "fieldsOfInterest": {
         "HIDE_EMPTY_FIELDS": "비어 있는 필드 숨기기",
         "Hide_EMPTY_FIELDS_TOOLTIP": "체크하면 모든 빈 필드が 숨겨집니다.",
         

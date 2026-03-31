@@ -1,5 +1,5 @@
 {
-    "fsmAlertDetials": {
+    "fieldsOfInterest": {
         "HIDE_EMPTY_FIELDS": "空のフィールドを非表示",
         "Hide_EMPTY_FIELDS_TOOLTIP":"チェックすると、すべての空のフィールドが非表示になります。",
         
