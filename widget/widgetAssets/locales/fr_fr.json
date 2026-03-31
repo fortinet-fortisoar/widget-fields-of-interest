@@ -1,0 +1,37 @@
+{
+  "fieldsOfInterest": {
+    "HIDE_EMPTY_FIELDS": "Masquer les champs vides",
+    "HIDE_EMPTY_FIELDS_TOOLTIP": "Si coché, tous les champs vides seront masqués.",
+
+    "ADD_SECTION": "Ajouter une section",
+    "ALL_INLINE": "Tout en ligne",
+    "ALL_INLINE_TOOLTIP": "Si non coché, tous les champs afficheront un bouton d’édition au lieu d’une modification par clic.",
+    "ALL_READ_ONLY": "Tout en lecture seule",
+    "CLOSE_BTN": "Fermer",
+    "CUSTOM_HTML": "HTML personnalisé",
+    "CUSTOM_VIEW": "Vue personnalisée",
+    "CUSTOM_WIDGET": "Widget personnalisé",
+    "EDIT_TITLE": "Titre (laisser vide pour aucun titre)",
+    "EXCLUDE_FIELDS": "Exclure les champs suivants",
+    "HTML": "HTML",
+    "HTML_PLACEHOLDER": "Ajouter du HTML",
+    "INLINE_EDITOR": "Éditeur en ligne",
+    "INLINE_EDITOR_TOOLTIP": "Si non coché, le champ affichera un bouton d’édition au lieu d’une modification par clic.",
+    "IS_JSON": "Contenu JSON",
+    "READ_ONLY": "Tout en lecture seule",
+    "READ_ONLY_TOOLTIP": "Si coché, tous les champs seront en lecture seule независимо des permissions.",
+    "SAVE_BTN": "Enregistrer",
+    "SELECT_A_WIDGET": "Sélectionner un widget",
+    "SELECT_WIDGET": "Sélectionner un widget",
+    "SHOW_ALL_FIELDS": "Afficher tous les champs restants",
+    "SHOW_FIELDS": "Afficher la case de visibilité des champs",
+    "SHOW_FIELDS_TOOLTIP": "Permet d’afficher la case « Masquer les champs vides » dans la vue détaillée du module",
+    "TITLE": "Titre",
+    "TITLE_TOOLTIP": "Donner un titre à la propriété",
+    "TOOLTIP": "Infobulle",
+    "TOOLTIP_TOOLTIP": "Donner une infobulle à la propriété",
+    "WIDGET_EDIT_TITLE": "Modifier les champs d’intérêt",
+    "WIDGET_HEIGHT": "Hauteur du widget",
+    "WIDGET_HEIGHT_TOOLTIP": "Définir la hauteur de l’éditeur JSON (en px). Valeur minimale : 250 px, maximale : 800 px"
+  }
+}
