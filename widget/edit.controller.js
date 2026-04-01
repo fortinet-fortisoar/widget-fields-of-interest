@@ -57,6 +57,7 @@ Copyright end */
         init();
 
         function init() {
+            loadAttributes();
         }
 
         function applyDefaults(attribute, value) {

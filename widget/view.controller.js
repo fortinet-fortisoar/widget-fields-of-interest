@@ -27,6 +27,12 @@ Copyright end */
             });
             init();
         });
+
+        var viewValueChangeDestroy = $scope.$on('csFields:viewValueChange', updateFieldValueFromExternalChange);
+        $scope.$on('destroy', function () {
+            viewValueChangeDestroy();
+        });
+
         $scope.init = init;
 
         if (!$scope.entity) {
@@ -207,5 +213,9 @@ Copyright end */
             return false;
         }
 
+        function updateFieldValueFromExternalChange(event, obj) {
+            const field = obj.field;
+            viewValueChange(field);
+        }
     }
 })();
