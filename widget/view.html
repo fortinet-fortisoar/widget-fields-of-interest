@@ -17,7 +17,6 @@ Copyright end -->
 
 
     <div data-ng-hide="collapsed">
-
         <div class="padding-bottom-lg">
             <div class="row section-widget edit-form-widget">
                 <cs-spinner data-ng-hide="initialized" data-show-background="true"></cs-spinner>
@@ -43,8 +42,7 @@ Copyright end -->
                             <div data-ng-repeat="field in ::section.fields">
                                 <div data-cs-editable-field data-field="field.fieldData" data-mode="row.mode"
                                     data-field-options="field.options" submit="submitField"
-                                    data-change-method="notifyFieldChange" data-disabled="!field.fieldData.editable"
-                                    class="label-width-30" data-ng-if="field.options.customViewFormat !== 'custom-widget'"></div>
+                                    data-change-method="notifyFieldChange" data-disabled="!field.fieldData.editable" data-ng-if="field.options.customViewFormat !== 'custom-widget'"></div>
                                 <div data-ng-if="field.options.customViewFormat === 'custom-widget'" class="form-group editable label-width-30">
                                     <label class="control-label control-label-wrap padding-right-12"
                                         data-ng-if="!usePlaceholder"><span
