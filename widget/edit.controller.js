@@ -1,4 +1,3 @@
-
 /* Copyright start
     MIT License
     Copyright (c) 2026 Fortinet Inc
@@ -10,25 +9,33 @@ Copyright end */
         .module('cybersponse')
         .controller('editFieldsOfInterest110Ctrl', editFieldsOfInterest110Ctrl);
 
-    editFieldsOfInterest110Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService', 'CommonUtils', 'viewTemplate'];
+    editFieldsOfInterest110Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService', 'CommonUtils', 'viewTemplate', 'layoutConverterService'];
 
-    function editFieldsOfInterest110Ctrl($scope, $uibModalInstance, config, _, $state, Entity, widget, ViewTemplateService, CommonUtils, viewTemplate) {
+    function editFieldsOfInterest110Ctrl($scope, $uibModalInstance, config, _, $state, Entity, widget, ViewTemplateService, CommonUtils, viewTemplate, layoutConverterService) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.widget = widget;
         $scope.config = config;
         $scope.config.hideEmptyFieldsCheckbox = !CommonUtils.isUndefined($scope.config.hideEmptyFieldsCheckbox) ? $scope.config.hideEmptyFieldsCheckbox : true;
-        $scope.config.rows = $scope.config.rows || [{
-            columns: [
-                {
-                    sections: [
+        
+        $scope.config.rows =
+            ($scope.config.rows && $scope.config.rows.length > 0)
+                ? (
+                    $scope.config.rows[0]?.columns?.[0]?.sections
+                        ? $scope.config.rows
+                        : layoutConverterService.convertLayout($scope.config.rows)
+                )
+                : [{
+                    columns: [
                         {
-                            fields: []
+                            sections: [
+                                {
+                                    fields: []
+                                }
+                            ]
                         }
                     ]
-                }
-            ]
-        }];
+                }];
 
         $scope.config.excludeFieldsArray = $scope.config.excludeFieldsArray ? $scope.config.excludeFieldsArray.map(({ title, name }) => ({ title, name })) : [];
         $scope.changeStructure = changeStructure;
@@ -63,7 +70,7 @@ Copyright end */
         function applyDefaults(attribute, value) {
             angular.forEach($scope.config.rows, function (row) {
                 angular.forEach(row.columns, function (column) {
-                    angular.forEach(row.sections, function (section) {
+                    angular.forEach(column.sections, function (section) {
                         angular.forEach(section.fields, function (field) {
                             if (attribute === 'highlightMode' && $scope.alwaysUseEdit.indexOf($scope.fields[field.name].type) > -1) {
                                 return;

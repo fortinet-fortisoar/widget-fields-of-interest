@@ -1,4 +1,3 @@
-
 /* Copyright start
     MIT License
     Copyright (c) 2026 Fortinet Inc
@@ -10,9 +9,9 @@ Copyright end */
         .module('cybersponse')
         .controller('fieldsOfInterest110Ctrl', fieldsOfInterest110Ctrl);
 
-    fieldsOfInterest110Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', '$interpolate', 'viewTemplate', '$rootScope', '$timeout', 'widgetBasePath'];
+    fieldsOfInterest110Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', '$interpolate', 'viewTemplate', '$rootScope', '$timeout', 'widgetBasePath', 'layoutConverterService'];
 
-    function fieldsOfInterest110Ctrl($scope, $state, Entity, FormEntityService, $interpolate, viewTemplate, $rootScope, $timeout, widgetBasePath) {
+    function fieldsOfInterest110Ctrl($scope, $state, Entity, FormEntityService, $interpolate, viewTemplate, $rootScope, $timeout, widgetBasePath, layoutConverterService) {
         $scope.id = $state.params.id;
         $scope.module = $state.params.module;
         $scope.updateFieldValues = updateFieldValues;
@@ -40,6 +39,24 @@ Copyright end */
         }
 
         function init() {
+            $scope.config.rows =
+                ($scope.config.rows && $scope.config.rows.length > 0)
+                    ? (
+                        $scope.config.rows[0]?.columns?.[0]?.sections
+                            ? $scope.config.rows
+                            : layoutConverterService.convertLayout($scope.config.rows)
+                    )
+                    : [{
+                        columns: [
+                            {
+                                sections: [
+                                    {
+                                        fields: []
+                                    }
+                                ]
+                            }
+                        ]
+                    }];
             if ($scope.entity) {
                 getFields();
                 $scope.initialized = true;
