@@ -2,16 +2,8 @@
 
 ## Enhancements
 
-- Enhanced the appearance of column headings so they appear more prominent in the widget.
+- A new *Add Section* feature helps create a new section that can group relevant fields together.
 
-- Added a new **Row Style** field that customizes the layout of the labels and their values
+- The fields and their values have been added in a tabular structure for easier understanding.
 
-## Bug Fixes
-
-- Optimized **Exclude Following Fields** lookup field to display only eligible fields.
-
-    - Implemented the Alphabetical sorting in the **Others** column, in the record's detailed view.
-
-- Streamlined **Others** column to show only necessary fields, i.e., system fields like `UUID`, `Assignee`, and others are not visible anymore.
-
-- Fixed an issue where the fields were hidden in detailed view but persisted edit view under **Exclude Following Fields**.
+- Custom views helps add a widget or an HTML code as a value for added fields
