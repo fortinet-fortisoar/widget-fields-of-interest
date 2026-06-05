@@ -6,7 +6,7 @@
 
 - **Publisher**: Fortinet  
 
-- **Compatibility**: 7.3.1 and later
+- **Compatibility**: 8.0.0 and later
 
 - **Applicable**: View Panel
 
