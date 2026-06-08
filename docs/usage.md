@@ -19,29 +19,37 @@ To add this widget to the detail view of a module record, perform the following 
 
 1. Click to open the detailed view of a record, for example an alert.
 
-    ![](./media/alert-detailed-view.png)
+    ![](./res/alert-detailed-view.png)
 
-2. Click **Edit Template** (![](./media/icon-edit.svg)) to display its System View Template (SVT).
+2. Click **Edit Template** (![](./res/icon-edit.svg)) to display its System View Template (SVT).
 
-    ![](./media/editing-alert-svt.png)
+    ![](./res/editing-alert-svt.png)
 
 3. Click **Add Widget** and select the **Fields Of Interest** widget from the **Widget Library** section.
 
-    ![](./media/add-widget.png)
+    ![](./res/add-widget.png)
 
 4. Specify the title of the widget in the **Title (Leave Blank For No Title)** field.
 
-    ![](./media/foi-edit-view-00.png)
+    ![](./res/foi-edit-view-00.png)
 
 5. Specify the display style in the **Row Style** field. For now, you can either leave it blank or enter **display-inline-block**. Following screenshots display the widget with different styling.
 
-    | ![](./media/detailed-view-inline.png) | ![](./media/detailed-view-no-inline.png) |
+    | ![](./res/detailed-view-inline.png) | ![](./res/detailed-view-no-inline.png) |
     |:-------------------------------------:|:----------------------------------------:|
-    |   Row Style `display-inline-block`    |           No Row Style applied           |
+    | **Row Style `display-inline-block`**  |         **No Row Style applied**         |
 
 6. Select fields to be added to this widget and click the **Add** button.
 
-    ![](./media/foi-edit-view-02.png)
+    ![](./res/foi-edit-view-02.png)
+
+    - Click the **+Add Section** to create a new section for grouping fields together.
+
+    ![](./res/foi-edit-view-02-00.png)
+
+    - Click to expand an added field. Here you can add a custom widget, using either
+      - **A Custom Widget**: Add a *Title*, *Tooltip*, and a widget to display
+      - **A Custom HTML**: Enter an HTML code to display
 
 7. Select a column layout under **Layout**. You can select from following options:
 
@@ -49,29 +57,29 @@ To add this widget to the detail view of a module record, perform the following 
     - 2-column structure
     - 3-column structure
 
-    ![](./media/foi-edit-view-03.png)
+    ![](./res/foi-edit-view-03.png)
 
     To arrange fields, drag-and-drop them to respective columns.
 
 8. Select the checkbox **Show Field Visibility Checkbox** to display the *Hide Empty Fields* checkbox in detailed view of the module.
 
-    ![](./media/foi-edit-view-04.png)
+    ![](./res/foi-edit-view-04.png)
 
 9. Select the checkbox **All Inline** to make the fields editable.
 
-    ![](./media/foi-edit-view-05.png)
+    ![](./res/foi-edit-view-05.png)
 
 10. Select the checkbox **All Read-Only** to display the fields as read-only.
 
-    ![](./media/foi-edit-view-06.png)
+    ![](./res/foi-edit-view-06.png)
 
 11. Enable the **Show all Remaining Fields** toggle to include all remaining fields of the module and create a new column called *Others* in the detail view of the record.
 
-    ![](./media/foi-edit-view-07.png)
+    ![](./res/foi-edit-view-07.png)
 
 12. Select fields that you want to exclude from the *Others* column from the **Exclude Following Fields** drop-down.
 
-    ![](./media/foi-edit-view-08.png)
+    ![](./res/foi-edit-view-08.png)
 
 13. Click **Save** to save the changes made to the widget
 
@@ -81,11 +89,11 @@ To add this widget to the detail view of a module record, perform the following 
 
 The following image displays the detailed view of an alert record when the **Hide Empty Fields** checkbox is selected.
 
-![](./media/detailed-view-hidden.png)
+![](./res/detailed-view-hidden.png)
 
 The following image displays the detailed view of an alert record when the **Hide Empty Fields** checkbox is cleared.
 
-![](./media/alert-detailed-view.png)
+![](./res/alert-detailed-view.png)
 
 | [Installation](./setup.md#installation) | [Configuration](./setup.md#configuration) |
 |-----------------------------------------|-------------------------------------------|

@@ -1,12 +1,12 @@
 ## Release Information
 
-- **Version**: 1.0.2
+- **Version**: 1.1.0
 
 - **Certified**: Yes
 
 - **Publisher**: Fortinet  
 
-- **Compatibility**: 7.3.1 and later
+- **Compatibility**: 8.0.0 and later
 
 - **Applicable**: View Panel
 
