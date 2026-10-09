@@ -7,11 +7,11 @@ Copyright end */
 (function () {
     angular
         .module('cybersponse')
-        .controller('editFieldsOfInterest110Ctrl', editFieldsOfInterest110Ctrl);
+        .controller('editFieldsOfInterest120Ctrl', editFieldsOfInterest120Ctrl);
 
-    editFieldsOfInterest110Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService', 'CommonUtils', 'viewTemplate', 'layoutConverterService'];
+    editFieldsOfInterest120Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', '_', '$state', 'Entity', 'widget', 'ViewTemplateService', 'CommonUtils', 'viewTemplate', 'layoutConverterService'];
 
-    function editFieldsOfInterest110Ctrl($scope, $uibModalInstance, config, _, $state, Entity, widget, ViewTemplateService, CommonUtils, viewTemplate, layoutConverterService) {
+    function editFieldsOfInterest120Ctrl($scope, $uibModalInstance, config, _, $state, Entity, widget, ViewTemplateService, CommonUtils, viewTemplate, layoutConverterService) {
         $scope.cancel = cancel;
         $scope.save = save;
         $scope.widget = widget;
