@@ -7,11 +7,11 @@ Copyright end */
 (function () {
     angular
         .module('cybersponse')
-        .controller('fieldsOfInterest110Ctrl', fieldsOfInterest110Ctrl);
+        .controller('fieldsOfInterest120Ctrl', fieldsOfInterest120Ctrl);
 
-    fieldsOfInterest110Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', '$interpolate', 'viewTemplate', '$rootScope', '$timeout', 'widgetBasePath', 'layoutConverterService'];
+    fieldsOfInterest120Ctrl.$inject = ['$scope', '$state', 'Entity', 'FormEntityService', '$interpolate', 'viewTemplate', '$rootScope', '$timeout', 'widgetBasePath', 'layoutConverterService'];
 
-    function fieldsOfInterest110Ctrl($scope, $state, Entity, FormEntityService, $interpolate, viewTemplate, $rootScope, $timeout, widgetBasePath, layoutConverterService) {
+    function fieldsOfInterest120Ctrl($scope, $state, Entity, FormEntityService, $interpolate, viewTemplate, $rootScope, $timeout, widgetBasePath, layoutConverterService) {
         $scope.id = $state.params.id;
         $scope.module = $state.params.module;
         $scope.updateFieldValues = updateFieldValues;
@@ -201,8 +201,6 @@ Copyright end */
                 }
                 //Show Hidden fields, visiblity true
                 if (fieldValue.fieldData) {
-                    fieldValue.fieldData.visible = true;
-                    fieldValue.fieldData.visibility = true;
                     fieldValues.push(fieldValue);
                 }
             });
