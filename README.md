@@ -14,8 +14,7 @@
 
 
 ## Overview
-
-The **Fields of Interest** widget helps display selected fields in the detail view of an individual module record, regardless of any visibility constraint that might have been set. This widget also helps choose whether to hide or show empty record fields. This widget is configurable separately for each module.
+The **Fields of Interest** widget helps display selected fields in the detail view of an individual module record, regardless of any visibility conditions set on those fields. Fields set to **Hidden** in **Module Editor** are not displayed.
 
 ## Next Steps
 

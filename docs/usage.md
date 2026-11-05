@@ -13,6 +13,9 @@ The Fields Of Interest widget displays selected fields in the detailed view of a
 
 You can configure this widget separately for each module, i.e., the modification of this widget done for one module is independent of other modules.
 
+> [!Note]
+> If a field's **Visibility** is set to **Hidden** in **Module Editor**, the **Fields of Interest** widget does not display it on the record detail view, even when the field is selected in the widget.
+
 ## Fields of Interest Widget Views
 
 To add this widget to the detail view of a module record, perform the following steps:
